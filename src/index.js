@@ -1,1 +1,2 @@
-console.log('My Minimal React Webpack Babel Setup');
+import "./scss/base.scss"
+import "./js/content"
