@@ -7,4 +7,4 @@ WORKDIR /home/app/webapp
 
 RUN yarn
 RUN yarn build
-CMD yarn server
+CMD yarn production
