@@ -1,10 +1,12 @@
 {
-  "name": "iris",
-  "version": "0.1.0",
+ "name": "iris",
+ "version": "0.1.0",
  "scripts": {
   "build": "webpack",
-  "start": "concurrently --kill-others \"node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0\" \"webpack --watch\"",
-  "test": "jest"
+  "test": "jest",
+  "client": "webpack-dev-server --mode development --devtool inline-source-map  --host 0.0.0.0 --port 3000",
+  "server": "node src/server/index.js",
+  "start": "concurrently --kill-others \"npm run server\" \"npm run client\" \"webpack --watch\""
  },
  "jest": {
   "moduleFileExtensions": [
@@ -55,7 +57,9 @@
   "@babel/runtime": "^7.0.0",
   "babel-loader": "^8.0.0",
   "clean-webpack-plugin": "^0.1.19",
+  "express": "^4.16.3",
   "html-webpack-plugin": "^3.2.0",
+  "nodemon": "^1.18.4",
   "optimize-css-assets-webpack-plugin": "^5.0.0"
  }
 }

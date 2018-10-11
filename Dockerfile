@@ -4,6 +4,9 @@ RUN apk --no-cache add git ca-certificates
 
 ADD . /home/app/webapp
 WORKDIR /home/app/webapp
-RUN yarn
 
-RUN yarn start
+EXPOSE 8080
+
+RUN yarn
+RUN yarn build
+RUN yarn server
