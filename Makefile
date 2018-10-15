@@ -8,4 +8,4 @@ build:
 	docker build $(BUILD_ARGS) -t $(IMAGE):$(VERSION) -t $(IMAGE):latest .
 
 start:
-	docker run -p 80:80 $(IMAGE):latest
+	docker run -p 80:80 -t -i $(IMAGE):latest
