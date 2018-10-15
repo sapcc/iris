@@ -1,5 +1,6 @@
 IMAGE := sapcc/iris
-VERSION  ?= $(shell git rev-parse --verify HEAD)
+DATE     := $(shell date +%Y%m%d%H%M%S)
+VERSION  ?= v$(DATE)
 BUILD_ARGS = --build-arg VERSION=$(VERSION)
 
 .PHONY: build, start
