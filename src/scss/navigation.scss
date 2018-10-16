@@ -1,0 +1,70 @@
+// ---------------------------------------------------------------------------------
+// Navigation
+// ---------------------------------------------------------------------------------
+
+.navbar-inverse {
+  background-color: #222;
+  border-color: #090909;
+}
+
+.navbar-inverse {
+  background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222 100%);
+  background-image: -o-linear-gradient(top, #3c3c3c 0%, #222 100%);
+  background-image: linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF3C3C3C', endColorstr='#FF222222', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 1px;
+}
+
+.navbar a, a.btn {
+  text-decoration: none;
+}
+
+.flex-layout .navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+// special top of page navbar
+.navbar-sap {
+  &.navbar-inverse .dropdown-menu > .active > a {
+    background: rgba(255, 255, 255, 0.25);
+    color: #999;
+  }
+}
+
+.navbar-inverse {
+
+  .dropdown-menu {
+    background-color: $inverse-dropdown-bg;
+
+    .divider {
+      // @include nav-divider($inverse-dropdown-divider-bg);
+    }
+
+    > li > a {
+      color: $inverse-dropdown-link-color;
+
+      &:hover,
+      &:focus {
+        color: $dropdown-link-hover-color;
+      }
+    }
+
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $dropdown-link-active-color;
+      }
+    }
+
+  }
+
+}

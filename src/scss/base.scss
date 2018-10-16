@@ -1,4 +1,13 @@
-$bg-color: orange;
-body {
-  background-color: $bg-color;
+@import "~bootstrap/scss/bootstrap";
+@import 'variables';
+@import 'navigation';
+
+.logo {
+  background: url("../images/sap-logo.svg") no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  height: 30px;
+  width: 62px;
 }
