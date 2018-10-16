@@ -1,0 +1,124 @@
+jobs:
+  - name: README
+    serial: true
+    plan:
+      - task: describe-this-pipeline
+        config:
+          platform: 'linux'
+          image_resource:
+            type: docker-image
+            source:
+              repository: alpine
+              tag: latest
+          run:
+            path: /bin/echo
+            args:
+              - -e
+              - '\tThis pipeline is defined at: https://github.com/sapcc/iris/ci\n'
+              - '\tThe secrets are at: {{pipeline-secrets-repository}}\n'
+
+
+  - name: build
+    serial: true
+    plan:
+      - aggregate:
+        - get: iris.git
+          trigger: true
+        - put: version
+      - aggregate:
+        - put: iris.image
+          params:
+            tag_as_latest: true
+            cache: true
+            cache_tag: 'latest'
+            build: iris.git
+            build_args:
+              http_proxy: {{http-proxy}}
+              https_proxy: {{https-proxy}}
+              no_proxy: {{no-proxy}}
+            tag: version/version
+          get_params:
+            skip_download: true
+
+  - name: vscan
+    serial: true
+    plan:
+      - aggregate:
+        - get: iris.git
+          passed: [build]
+        - get: version
+          passed: [build]
+          trigger: true
+        - get: vscan.image
+      - task: scan-iris-image
+        file: iris.git/ci/tasks/vscan.yaml
+        image: vscan.image
+        input_mapping:
+          image.version: version
+        params:
+          IMAGE_NAME: ((internal-image-repository))/iris
+          CLAIR_URL: ((clair-uri))
+
+  - name: qa-de-1
+    serial: true
+    plan:
+      - aggregate:
+        - get: iris.git
+        - get: version
+          trigger: true
+          passed: [vscan]
+        - get: charts.git
+        - get: secrets.git
+        - get: kubectl.image
+      - task: deploy
+        file: iris.git/ci/tasks/helm-upgrade.yaml
+        image: kubectl.image
+        params:
+          REGION: qa-de-1
+          GITHUB_TOKEN: {{github-access-token}}
+
+
+resources:
+  - name: iris.git
+    type: git
+    source:
+      uri: https://github.com/sapcc/iris.git
+      branch: master
+      username: sapcc-bot
+      password: {{github-com-access-token}}
+
+  - name: charts.git
+    type: git
+    source:
+      uri: https://github.com/sapcc/helm-charts.git
+      branch: master
+
+  - name: secrets.git
+    type: git
+    source:
+      uri: git@((helm-chart-secrets-repository))
+      private_key: {{secrets-ssh-key}}
+      branch: master
+
+  - name: version
+    type: time-version-resource
+    check_every: 525600h
+
+  - name: iris.image
+    type: docker-image
+    source:
+      username:   {{internal-registry-username}}
+      password:   {{internal-registry-password}}
+      repository: ((internal-image-repository))/iris
+
+  - name: vscan.image
+    type: docker-image
+    source:
+      repository: ((internal-image-repository))/klar
+      tag: 2.3.0
+
+  - name: kubectl.image
+    type: docker-image
+    source:
+      repository: ((internal-image-repository))/kubectl
+      tag: v1.7.7

@@ -1,0 +1,24 @@
+---
+platform: linux
+
+inputs:
+- name: version
+- name: charts.git
+- name: secrets.git
+
+run:
+  path: sh
+  args:
+    - -exc
+    - |
+      set -o pipefail
+      tag=$(cat version/version)
+      helm upgrade iris charts.git/global/iris  --values secrets.git/$REGION/values/iris.yaml --set image.tag=$tag
+      kubectl rollout status deployment/iris --namespace=$NAMESPACE
+
+params:
+  STEP: 2
+  TIMEOUT: 300
+  NAMESPACE: elektra
+  REGION:
+  GITHUB_TOKEN:
