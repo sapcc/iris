@@ -56,7 +56,7 @@ jobs:
         input_mapping:
           image.version: version
         params:
-          IMAGE_NAME: ((internal-image-repository))/iris
+          IMAGE_NAME: ((internal-image-repository))/monsoon/iris
           CLAIR_URL: ((clair-uri))
 
   - name: qa-de-1
@@ -109,16 +109,24 @@ resources:
     source:
       username:   {{internal-registry-username}}
       password:   {{internal-registry-password}}
-      repository: ((internal-image-repository))/iris
+      repository: ((internal-image-repository))/monsoon/iris
 
   - name: vscan.image
     type: docker-image
     source:
-      repository: ((internal-image-repository))/klar
+      repository: ((internal-image-repository))/monsoon/klar
       tag: 2.3.0
 
   - name: kubectl.image
     type: docker-image
     source:
-      repository: ((internal-image-repository))/kubectl
+      repository: ((internal-image-repository))/monsoon/kubectl
       tag: v1.7.7
+
+
+resource_types:
+  - name: time-version-resource
+    type: docker-image
+    source:
+      repository: ((internal-image-repository))/concourse/time-version-resource
+      tag: v2
