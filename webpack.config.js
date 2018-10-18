@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -52,7 +53,15 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
+  devServer: {
+    proxy: {
+      '/api': 'http://localhost:80',
+      '/system/liveliness': 'http://localhost:80',
+      '/system/readiness': 'http://localhost:80'
+    }
+  },
   plugins: [
+    new Dotenv({systemvars: true}),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: 'src/template.html',
