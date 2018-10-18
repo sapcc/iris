@@ -1,4 +1,6 @@
+import ReactDOM from 'react-dom';
+import React from "react";
 import "./scss/base.scss"
-import "./js/content"
+import App from './js/app';
 
-//console.log('Promise', Promise)
+ReactDOM.render(<App/>, document.getElementById('react-content') )

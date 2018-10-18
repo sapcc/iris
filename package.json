@@ -10,19 +10,12 @@
   "production": "node src/server/index.js"
  },
  "jest": {
-  "moduleFileExtensions": [
-   "js",
-   "jsx"
-  ],
-  "moduleDirectories": [
-   "node_modules",
-   "bower_components",
-   "shared"
-  ],
-  "moduleNameMapper": {
-   "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
-   "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
-  }
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleDirectories": ["node_modules", "bower_components", "shared"],
+    "moduleNameMapper": {
+     "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+     "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+   }
  },
  "author": "Andreas Pfau, Arturo Reuschenbach",
  "license": "MIT",
@@ -31,8 +24,8 @@
   "@babel/plugin-transform-modules-commonjs": "^7.1.0",
   "@babel/preset-env": "^7.1.0",
   "@babel/preset-react": "^7.0.0",
-  "babel-core": "*",
-  "babel-jest": "*",
+  "babel-core": "^7.0.0-bridge.0",
+  "babel-jest": "^23.6.0",
   "concurrently": "^4.0.1",
   "css-loader": "^1.0.0",
   "extract-text-webpack-plugin": "^4.0.0-beta.0",
