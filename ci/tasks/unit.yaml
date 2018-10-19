@@ -9,11 +9,11 @@ inputs:
 - name: iris.git
   path: /home/app/webapp/iris
 
-run:
-  path: /bin/bash
-  args:
-    - -c
-    - |
-      cd /home/app/webapp/iris
-      yarn --dev
-      yarn test
+# run:
+#   path: /bin/bash
+#   args:
+#     - -c
+#     - |
+#       cd /home/app/webapp/iris
+#       yarn --dev
+#       yarn test
