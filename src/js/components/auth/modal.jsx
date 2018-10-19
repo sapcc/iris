@@ -23,11 +23,10 @@ export class AuthModal extends React.Component {
 
   saveToken = (token) => {
     console.log(token)
-    this.setState({auth_data: token.auth_data, auth_token: token.auth_token}, () => console.log('new state', this.state))
+    this.setState({auth_data: token.auth_data, auth_token: token.auth_token})
   }
 
   render() {
-    console.log('process.env.AUTH_SCOPE_DOMAIN',process.env.AUTH_SCOPE_DOMAIN)
     // return(
     //   <Modal
     //     show={this.state.show}
