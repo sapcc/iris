@@ -14,7 +14,7 @@ start:
 	docker run -p 80:80 -t -i $(IMAGE):latest
 
 unit:
-	yarn --dev & yarn test
+	yarn --dev && yarn test
 
 build-unit:
 	docker build -t $(UNIT-IMAGE):$(UNIT-VERSION) -f ./ci/Dockerfile.unit .
