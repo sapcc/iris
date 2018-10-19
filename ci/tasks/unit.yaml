@@ -14,6 +14,5 @@ run:
   args:
     - -c
     - |
-      echo $PWD
-      ls -la
-      make -C /home/app/webapp/iris unit
+      ls -la $PWD
+      make -C $PWD/home/app/webapp/iris unit
