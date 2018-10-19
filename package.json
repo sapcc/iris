@@ -1,68 +1,75 @@
 {
- "name": "iris",
- "version": "0.1.0",
- "scripts": {
-  "build": "webpack",
-  "test": "jest",
-  "client": "webpack-dev-server --mode development --devtool inline-source-map  --host 0.0.0.0 --port 5000",
-  "server": "nodemon src/server/index.js",
-  "start": "concurrently --kill-others \"npm run server\" \"npm run client\" \"webpack --watch\"",
-  "production": "node src/server/index.js"
- },
- "jest": {
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules", "bower_components", "shared"],
+  "name": "iris",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "webpack",
+    "test": "jest",
+    "client": "webpack-dev-server --mode development --devtool inline-source-map  --host 0.0.0.0 --port 5000",
+    "server": "nodemon src/server/index.js",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run client\" \"webpack --watch\"",
+    "production": "node src/server/index.js"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
     "moduleNameMapper": {
-     "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
-     "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
-   }
- },
- "author": "Andreas Pfau, Arturo Reuschenbach, Esther Schmitz",
- "license": "MIT",
- "devDependencies": {
-  "@babel/core": "^7.1.2",
-  "@babel/plugin-transform-modules-commonjs": "^7.1.0",
-  "@babel/preset-env": "^7.1.0",
-  "@babel/preset-react": "^7.0.0",
-  "babel-core": "^7.0.0-bridge.0",
-  "babel-jest": "^23.6.0",
-  "autoprefixer": "^9.2.0",
-  "concurrently": "^4.0.1",
-  "css-loader": "^1.0.0",
-  "extract-text-webpack-plugin": "^4.0.0-beta.0",
-  "jest": "^23.5.0",
-  "jest-webpack": "^0.5.1",
-  "mini-css-extract-plugin": "^0.4.2",
-  "node-sass": "^4.9.3",
-  "postcss-loader": "^3.0.0",
-  "react": "^16.4.2",
-  "react-dom": "^16.4.2",
-  "regenerator-runtime": "^0.12.1",
-  "sass-loader": "^7.1.0",
-  "style-loader": "^0.23.0",
-  "uglifyjs-webpack-plugin": "^1.3.0",
-  "webpack": "^4.17.1",
-  "webpack-cli": "^3.1.0",
-  "webpack-dev-server": "^3.1.7"
- },
- "dependencies": {
-  "@babel/plugin-proposal-class-properties": "^7.1.0",
-  "@babel/plugin-transform-runtime": "^7.1.0",
-  "@babel/preset-env": "^7.1.0",
-  "@babel/runtime": "^7.0.0",
-  "axios": "^0.18.0",
-  "babel-loader": "^8.0.0",
-  "bootstrap": "^4.1.3",
-  "clean-webpack-plugin": "^0.1.19",
-  "dotenv-webpack": "^1.5.7",
-  "express": "^4.16.3",
-  "file-loader": "^2.0.0",
-  "html-webpack-plugin": "^3.2.0",
-  "nodemon": "^1.18.4",
-  "optimize-css-assets-webpack-plugin": "^5.0.0",
-  "react-bootstrap": "v1.0.0-beta.1",
-  "react-json-view": "^1.19.1",
-  "react-router-dom": "^4.3.1",
-  "url-loader": "^1.1.2"
- }
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    }
+  },
+  "author": "Andreas Pfau, Arturo Reuschenbach, Esther Schmitz",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "autoprefixer": "^9.2.0",
+    "concurrently": "^4.0.1",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "jest": "^23.5.0",
+    "jest-webpack": "^0.5.1",
+    "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.3",
+    "postcss-loader": "^3.0.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "regenerator-runtime": "^0.12.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/runtime": "^7.0.0",
+    "axios": "^0.18.0",
+    "babel-loader": "^8.0.0",
+    "bootstrap": "^4.1.3",
+    "clean-webpack-plugin": "^0.1.19",
+    "dotenv-webpack": "^1.5.7",
+    "express": "^4.16.3",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.18.4",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
+    "react-bootstrap": "v1.0.0-beta.1",
+    "react-json-view": "^1.19.1",
+    "react-router-dom": "^4.3.1",
+    "url-loader": "^1.1.2"
+  }
 }

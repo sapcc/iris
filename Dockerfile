@@ -6,5 +6,5 @@ ADD . /home/app/webapp
 WORKDIR /home/app/webapp
 
 RUN yarn
-RUN yarn build
-CMD yarn production
+
+CMD yarn build && yarn production
