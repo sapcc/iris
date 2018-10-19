@@ -18,12 +18,23 @@ jobs:
               - '\tThe secrets are at: {{pipeline-secrets-repository}}\n'
 
 
+  - name: iris-unit
+    public: true
+    plan:
+      - get: iris.git
+        trigger: true
+      - aggregate:
+        - task: unit
+          file: iris.git/ci/tasks/unit.yaml
+    # on_failure:
+    #   <<: *post_failure_to_slack
+
   - name: build
     serial: true
     plan:
       - aggregate:
         - get: iris.git
-          trigger: true
+          passed: [iris-unit]
         - put: version
       - aggregate:
         - put: iris.image
