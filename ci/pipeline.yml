@@ -34,7 +34,7 @@ jobs:
     plan:
       - aggregate:
         - get: iris.git
-          passed: [iris-unit]
+          passed: [unit-test]
           trigger: true
         - put: version
       - aggregate:
