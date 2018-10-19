@@ -14,6 +14,4 @@ run:
   args:
     - -c
     - |
-      cd /home/app/webapp/iris
-      yarn --dev
-      yarn test
+      ls -la
