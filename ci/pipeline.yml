@@ -18,7 +18,7 @@ jobs:
               - '\tThe secrets are at: {{pipeline-secrets-repository}}\n'
 
 
-  - name: iris-unit
+  - name: unit-test
     public: true
     plan:
       - get: iris.git
@@ -35,6 +35,7 @@ jobs:
       - aggregate:
         - get: iris.git
           passed: [iris-unit]
+          trigger: true
         - put: version
       - aggregate:
         - put: iris.image
