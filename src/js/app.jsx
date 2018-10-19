@@ -21,4 +21,4 @@ const App = () => (
   </HashRouter>
 )
 
-ReactDOM.render(<App/>, document.getElementById('react-content'))
+export default App
