@@ -8,7 +8,6 @@ export class AuthModal extends React.Component {
   state = {show: true}
 
   componentDidMount() {
-    console.log('auth did mount')
     this.setState({show: true})
   }
 
@@ -22,7 +21,6 @@ export class AuthModal extends React.Component {
   }
 
   saveToken = (token) => {
-    console.log(token)
     this.setState({auth_data: token.auth_data, auth_token: token.auth_token})
   }
 
@@ -83,7 +81,6 @@ export class AuthModal extends React.Component {
             scopeDomainName={process.env.AUTH_SCOPE_DOMAIN}
             scopeProjectName={process.env.AUTH_SCOPE_PROJECT}>
             {({values, error, handleLogin, handleChange}) => {
-              console.log('values',values)
               return <React.Fragment>
                 <Modal.Body>
                   <div className="form-group">
