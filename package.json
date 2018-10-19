@@ -17,7 +17,7 @@
      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
    }
  },
- "author": "Andreas Pfau, Arturo Reuschenbach",
+ "author": "Andreas Pfau, Arturo Reuschenbach, Esther Schmitz",
  "license": "MIT",
  "devDependencies": {
   "@babel/core": "^7.1.2",
@@ -26,6 +26,7 @@
   "@babel/preset-react": "^7.0.0",
   "babel-core": "^7.0.0-bridge.0",
   "babel-jest": "^23.6.0",
+  "autoprefixer": "^9.2.0",
   "concurrently": "^4.0.1",
   "css-loader": "^1.0.0",
   "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -33,6 +34,7 @@
   "jest-webpack": "^0.5.1",
   "mini-css-extract-plugin": "^0.4.2",
   "node-sass": "^4.9.3",
+  "postcss-loader": "^3.0.0",
   "react": "^16.4.2",
   "react-dom": "^16.4.2",
   "regenerator-runtime": "^0.12.1",
