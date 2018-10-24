@@ -23,8 +23,9 @@ app.get('/api/dns/:id', (req, res) => {
    dnsMock[0]["name"] = req.params.id
    res.json(dnsMock)
 });
-app.get("/api/project/:id", (req, res) => {
-  projectMock = jsonMock["project"]
+app.get("/api/search/:id", (req, res) => {
+  searchValue = req.params.id
+  projectMock = jsonMock[searchValue]
   res.json(jsonMock)
 });
 

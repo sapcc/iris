@@ -53,7 +53,7 @@
     "is_complete":true,
     "id":""
   },
-  "floatingIP":{
+  "10.236.36.157":{
     "router_id":"42f0af62-3769-4ed5-932f-55d3c7d5baaf",
     "status":"ACTIVE",
     "description":"",
@@ -67,7 +67,6 @@
     "tenant_id":"d6212fdc832747099b8e12ccf4fd5bd8",
     "cached_object_type":"floatingip",
     "project_id":"d6212fdc832747099b8e12ccf4fd5bd8",
-    "search_label":"floating_ip_address: 10.236.36.157 floating_network_id: 430991b3-da0d-41cb-ac54-d1d532841725 router_id: 42f0af62-3769-4ed5-932f-55d3c7d5baaf fixed_ip_address: 10.180.0.44 port_id: 47cbf9ab-7326-4a20-8323-704d2b2ea565",
     "scope":{
       "domain_id":"2bac466eed364d8a92e477459e908736",
       "domain_name":"monsoon3",
@@ -75,7 +74,7 @@
       "project_name":"f5-test"
     }
   },
-  "privateIP":[
+  "10.180.0.44":[
     {
       "allowed_address_pairs":[],
       "extra_dhcp_opts":[],
@@ -85,7 +84,7 @@
       "fixed_ips":[
         {
         "subnet_id":"5d990456-fecd-499a-82e5-2e8d1e88b1a0",
-        "ip_address":"10.180.0.44",
+        "ip_address":"10.180.0.44"
         }
       ],
       "id":"669277bf-49ba-4de0-99e9-4a8cae58796c",
@@ -93,7 +92,7 @@
         "8cf90f0b-774d-4d9a-a184-e53ca502e326"
       ],
       "binding:vif_details":{
-        "port_filter":false,
+        "port_filter":false
       },
       "binding:vif_type":"f5",
       "mac_address":"fa:16:3e:10:e2:f7",
@@ -104,7 +103,7 @@
         {
           "hostname":"host-10-180-0-44",
           "ip_address":"10.180.0.44",
-          "fqdn":"host-10-180-0-44.openstack.qa-de-1.cloud.sap.",
+          "fqdn":"host-10-180-0-44.openstack.qa-de-1.cloud.sap."
         }
       ],
       "device_id":"fad097e0-2514-57f9-aa7a-f525e87d54d5",
@@ -152,11 +151,11 @@
                   "address":"10.180.0.43",
                   "protocol_port":1081,
                   "id":"643c68ca-d6ac-4030-9342-188b80aa42d3",
-                  "operating_status":"ONLINE",
+                  "operating_status":"ONLINE"
                 }
               ],
               "id":"47ad967a-01fb-4049-8161-f898797dbdee",
-              "operating_status":"ONLINE",
+              "operating_status":"ONLINE"
             }
           ],
           "l7policies":[
@@ -165,7 +164,7 @@
               "rules":[],
               "id":"8ee31e60-5975-419a-94ab-e80246e494e8",
               "name":"proxy_protocol_2edF_v1_0",
-              "provisioning_status":"ACTIVE",
+              "provisioning_status":"ACTIVE"
             }
           ],
           "id":"5417688f-fe3c-4c91-bffe-14dd8eedc15d",
@@ -203,7 +202,7 @@
             }
           ],
           "id":"03a43d12-30d1-4ef1-bcd0-e8ba38852f94",
-          "operating_status":"ONLINE",
+          "operating_status":"ONLINE"
         }
       ],
       "vip_address":"10.180.0.44",
@@ -217,7 +216,7 @@
             "type":"TCP",
             "id":"fa039d59-3d62-4f5c-93a2-eb542fc0cde5",
             "name":"",
-            "provisioning_status":"ACTIVE",
+            "provisioning_status":"ACTIVE"
           },
           "members":[
             {
@@ -226,7 +225,7 @@
               "address":"10.180.0.43",
               "protocol_port":1081,
               "id":"643c68ca-d6ac-4030-9342-188b80aa42d3",
-              "operating_status":"ONLINE",
+              "operating_status":"ONLINE"
             }
           ],
           "id":"47ad967a-01fb-4049-8161-f898797dbdee",
@@ -243,7 +242,7 @@
               "address":"10.180.0.43",
               "protocol_port":443,
               "id":"64aa2392-afe7-468d-ab97-93e5a2012e20",
-              "operating_status":"NO_MONITOR",
+              "operating_status":"NO_MONITOR"
             }
           ],
           "id":"25c830ae-8548-4d52-b1f1-bbedf497774b",
@@ -261,8 +260,10 @@
         "domain_name":"monsoon3",
         "project_id":"d6212fdc832747099b8e12ccf4fd5bd8",
         "project_name":"f5-test"
-      }
+      },
+      "provider":"f5networks (f512-01)",
+      "logs":""
     }
   ],
-  "f5Agent":{}
+  "f5networks (f512-01)":{}
 }
