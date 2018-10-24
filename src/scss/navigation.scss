@@ -33,6 +33,9 @@
 
 // special top of page navbar
 .navbar-sap {
+  padding-left: 0;
+  padding-right: 0;
+
   &.navbar-inverse .dropdown-menu > .active > a {
     background: rgba(255, 255, 255, 0.25);
     color: #999;
@@ -67,4 +70,11 @@
 
   }
 
+}
+
+.navbar-brand {
+  display: flex;
+  &, &:hover, &:active {
+    color: $white;
+  }
 }

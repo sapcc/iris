@@ -1,33 +1,7 @@
 // --------------------------------------------------
-// BRAND COLORS
+// COLORS
 // --------------------------------------------------
 
-$sapgold:        #f0ab00;
-$light-sapgold:  #fcb913;
-$dark-sapgold:   #fc8613;
-
-$light-gray:     #ccc;
-$medium-gray:    #999;
-$dark-gray:      #666;
-
-$bright-blue:    #008fcc;
-$medium-blue:    #226ca9;
-$deep-blue:      #2b3f7b;
-
-$bright-purple:  #9c277b;
-$medium-purple:  #6b2982;
-$deep-purple:    #522a67;
-
-$bright-orange:  #de8a2e;
-$medium-orange:  #d4652d;
-$deep-orange:    #b34a2a;
-
-$bright-green:   #b4ca48;
-$medium-green:   #8ab54e;
-$deep-green:     #2a7b44;
-
-
-/* OTHER COLORS */
 $hover-blue:       #00a1e5;
 $hover-light-blue: #e5f4fa;
 $hover-orange:     #FFECCD;
@@ -38,6 +12,27 @@ $emphasize-info-border-color: #e2e8ea;
 
 $label-danger-greyscale-bg:   #333;
 $label-warning-greyscale-bg:  $medium-gray;
+
+$state-info-bg:         #d9edf7;
+$state-info-border:     #bcdff1;
+$state-info-text:       #31708f;
+$state-warning-bg:      #fcf8e3;
+$state-warning-border:  #faf2cc;
+$state-warning-text:    #8a6d3b;
+$state-success-bg:      #dff0d8;
+$state-success-border:  #d0e9c6;
+$state-success-text:    #3c763d;
+$state-danger-bg:       #f2dede;
+$state-danger-border:   #ebcccc;
+$state-danger-text:     #a94442;
+
+/* Bootstrap descriptive colors */
+$brand-primary: $medium-blue;
+$brand-info:    lighten($bright-blue, 10%);
+$brand-success: $medium-green;
+$brand-warning: lighten($bright-orange, 5%);
+$brand-danger:  #e22;
+
 
 
 // --------------------------------------------------
@@ -108,38 +103,14 @@ $footer-margin-top: 100px;
 
 $login-max-width: 360px;
 
-// --------------------------------------------------
-// BOOTSTRAP VARIABLE OVERRIDES
-// --------------------------------------------------
 
-// Buttons
-$btn-primary-border:  $medium-blue;
-$btn-primary-bg:      $medium-blue;
+// ---------------------------------------------------------------------------------
+// Variables based on bootstrap variables
+// ---------------------------------------------------------------------------------
 
-$btn-info-border:     lighten($bright-blue, 10%);
-$btn-info-bg:         lighten($bright-blue, 10%);
-
-$btn-success-border:  $medium-green;
-$btn-success-bg:      $medium-green;
-
-$btn-warning-border:  lighten($bright-orange, 5%);
-$btn-warning-bg:      lighten($bright-orange, 5%);
-
-$btn-danger-border:   #e22;
-$btn-danger-bg:       #e22;
-
-// Fonts
-$font-family-sans-serif: $font-family-sap-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-sans-serif-medium: $font-family-sap-medium, "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-sans-serif-light: $font-family-sap-light, "Helvetica Neue", Helvetica, Arial, sans-serif;
-$headings-font-family: $font-family-sap-regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-size-medium: ceil(($font-size-base * 1.125));
+$context-breadcrumb-font-size: $font-size-medium;
 
 
-// List group
-$list-group-hover-bg: $medium-blue;
-$list-group-link-hover-color: #fff;
-
-$dropdown-link-hover-color: red;
-$dropdown-link-active-color: green;
-$line-height-computed: 20px;
-$grid-gutter-width: 300px;
+// LAYOUT
+$layout-vertical-spacing: $grid-gutter-width;

@@ -1,0 +1,29 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.flex-header-sticky, .flex-footer-sticky {
+  flex: 0 0 auto;
+}
+
+.flex-body {
+  flex: 1 0 auto;
+}
+
+
+
+.logo {
+  background: url("../images/sap-logo.svg") no-repeat;
+  background-size: contain;
+  height: 30px;
+  width: 62px;
+}
