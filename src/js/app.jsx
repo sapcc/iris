@@ -10,18 +10,19 @@ import SearchBar from './components/search/search_bar'
 import SearchResultsList from './components/search/search_results_list'
 
 
-const Content = () => <span>Welcome to Iris</span>
+const Search = () => (
+  <React.Fragment>
+    <SearchBar/>
+    <SearchResultsList/>
+  </React.Fragment>
+)
 
 const App = () => (
   <HashRouter /*hashType="noslash"*/ >
-
     <React.Fragment>
       <MainNav/>
-      <Route path="/" component={Content}/>
+      <Route path="/" component={Search}/>
       <Route exact path="/login" component={AuthModal}/>
-      <Link to='/login'>Login</Link>
-      <SearchBar/>
-      <SearchResultsList/>
     </React.Fragment>
   </HashRouter>
 )
