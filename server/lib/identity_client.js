@@ -1,6 +1,6 @@
-import axios from 'axios';
+const axios = require('axios');
 
-export default(endpoint) => {
+module.exports = (endpoint) => {
   const buildScopeParams = (scopeOptions = {}) => {
     let scope = {}
     if (scopeOptions.scopeProjectId)
@@ -34,6 +34,19 @@ export default(endpoint) => {
     return null
   }
 
+  const validateAuthToken = (authToken) => {
+    return axios.get(`${endpoint}/v3/auth/tokens`, {
+      headers: {'X-Subject-Token': authToken, 'X-Auth-Token': authToken}
+    })
+  }
+
+  const user = (authToken,id) => {
+    console.log('id',id)
+    return axios.get(`${endpoint}/v3/users/${id}`, {
+      headers: {'X-Auth-Token': authToken}
+    })
+  }
+
   const createTokenByPassword = (options = {}) => {
     let auth = {
       "identity": {
@@ -53,8 +66,12 @@ export default(endpoint) => {
     let scope = buildScopeParams(options)
     if (scope) auth["scope"] = scope
 
-    return axios.post(`${endpoint}/v3/auth/tokens`, {auth})
+    return axios.post(`${endpoint}/v3/auth/tokens?nocatalog`, {auth})
   }
 
-  return {createTokenByPassword}
+  return {
+    createTokenByPassword,
+    validateAuthToken,
+    user
+  }
 }

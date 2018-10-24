@@ -1,60 +1,45 @@
-import identityClient from '../../actions/identity_client'
 import React from 'react'
-
-let identity = identityClient(process.env.IDENTITY_ENDPOINT)
 
 export class AuthForm extends React.Component {
   state = {
     auth: {
-      domain: '',
       user: '',
-      password: '',
-      scopeProjectName: null,
-      scopeDomainName: null,
-      scopeProjectId: null,
-      scopeDomainId: null
-    }
-  }
-
-  static defaultProps = {
-    showDomainInput: true
+      password: ''
+    },
+    valid: false
   }
 
   componentDidMount() {
     let defaultValues = {}
     Object.keys(this.state.auth).forEach(key => defaultValues[key] = this.props[key])
-    this.setState({auth: defaultValues})
+    this.setState({auth: defaultValues, valid: this.isValid(defaultValues)})
   }
 
   onChange = (e) => {
     e.preventDefault()
     let auth = {...this.state.auth, [e.target.name]: e.target.value}
 
-    this.setState({auth})
+    this.setState({auth, valid: this.isValid(auth)},() => console.log(this.state))
   }
 
-  login = (e) => {
+  isValid = (params) => {
+    console.log('validate',params, params.user && params.password && true)
+    return params.user && params.password && true
+  }
+
+  handleSubmit = (e) => {
     e.preventDefault()
-    this.setState({error: null})
-
-    identity.createTokenByPassword(this.state.auth).then((response) => {
-      if(this.props.onLoggedIn) {
-        this.props.onLoggedIn({auth_data: response.data.token, auth_token: response.headers['x-subject-token']})
-      }
-
-    }).catch(error => {
-      this.setState({error: error.message})
-    })
+    this.props.handleSubmit(this.state.auth)
   }
 
   render(){
     if(this.props.children) {
       return(
-        <form onSubmit={this.login}>
+        <form onSubmit={this.handleSubmit}>
           {React.createElement(this.props.children, {
-             handleLogin: this.login,
+             handleSubmit: this.handleSubmit,
              values: this.state.auth,
-             error: this.state.error,
+             isValid: this.state.valid,
              handleChange: this.onChange
            }
          )}
@@ -63,23 +48,7 @@ export class AuthForm extends React.Component {
     }
 
     return(
-      <form onSubmit={this.login}>
-        {this.state.error &&
-          <p className='alert alert-danger'>{this.state.error}</p>
-        }
-        {this.props.showDomainInput &&
-          <div className="form-group">
-            <label htmlFor="loginDomain">Domain</label>
-            <input
-              type="text"
-              className="form-control"
-              id="loginDomain"
-              name="domain"
-              placeholder="Domain"
-              value={this.state.domain}
-              onChange={this.onChange}/>
-          </div>
-        }
+      <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label htmlFor="loginUser">User</label>
           <input
@@ -102,11 +71,6 @@ export class AuthForm extends React.Component {
             onChange={this.onChange}/>
         </div>
         <button type="submit" className="btn btn-primary">Login</button>
-          {this.state.token &&
-            <div className='alert alert-notice'>
-              <ReactJson src={this.state.token}/>
-            </div>
-          }
       </form>
     )
   }

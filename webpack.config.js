@@ -5,9 +5,9 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const SaveHashes = require('assets-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
   optimization: {
     runtimeChunk: 'single',
     minimizer: [
@@ -47,7 +47,8 @@ module.exports = {
       {
         test: /\.(png|jpg|svg)$/,
         loader: 'url-loader'
-      }
+      },
+      { test: /\.jade$/, loader: 'jade-loader' }
     ]
   },
   resolve: {
@@ -55,19 +56,21 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '/api': 'http://localhost:80',
-      '/system/liveliness': 'http://localhost:80',
-      '/system/readiness': 'http://localhost:80'
+      '*': 'http://localhost:80'
     }
+    // proxy: {
+    //   '/api': 'http://localhost:80',
+    //   '/system/liveliness': 'http://localhost:80',
+    //   '/system/readiness': 'http://localhost:80'
+    // }
   },
   plugins: [
     new Dotenv({systemvars: true}),
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      template: 'src/template.html',
-      filename: 'index.html',
-      version: JSON.stringify(require("./package.json").version)
-    }),
-    new MiniCssExtractPlugin({filename: "[name].css", chunkFilename: "[name].[contenthash].css"})
+    new HtmlWebpackPlugin({template: 'src/templates/index.html', filename: 'index.html'}),
+    // new HtmlWebpackPlugin({template: 'src/templates/layout.jade', filename: 'index.html'}),
+    new MiniCssExtractPlugin({filename: "[name].css", chunkFilename: "[name].[contenthash].css"}),
+    // asstes manifest for express
+    new SaveHashes({path: path.join(__dirname, 'dist'), filename: 'manifest.json'})
   ]
 };

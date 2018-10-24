@@ -1,14 +1,14 @@
 import { AuthForm } from './form';
-import { Modal, Button } from 'react-bootstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import React from 'react'
 import ReactJson from 'react-json-view'
 
 
 export class AuthModal extends React.Component {
-  state = {show: true}
+  state = { show: true}
 
   componentDidMount() {
-    this.setState({show: true})
+    this.setState({show:true})
   }
 
   handleHide= () => {
@@ -20,69 +20,45 @@ export class AuthModal extends React.Component {
       this.props.history.replace(`/`)
   }
 
-  saveToken = (token) => {
-    this.setState({auth_data: token.auth_data, auth_token: token.auth_token})
-  }
-
   render() {
-    // return(
-    //   <Modal
-    //     show={this.state.show}
-    //     onHide={this.handleHide}
-    //     onExited={this.restoreUrl}>
-    //     <Modal.Header closeButton>
-    //       <Modal.Title>
-    //         Login
-    //       </Modal.Title>
-    //     </Modal.Header>
-    //     <Modal.Body>
-    //       <Auth/>
-    //     </Modal.Body>
-    //   </Modal>
-    // )
-
+    let {profile} = this.props
     return(
       <Modal
-        show={this.state.show}
-        onHide={this.handleHide}
-        onExited={this.restoreUrl}>
-        <Modal.Header closeButton>
-          <Modal.Title>
-            Login
-          </Modal.Title>
-        </Modal.Header>
+        isOpen={this.state.show}
+        onClose={this.handleHide}
+        onClosed={this.restoreUrl}>
+        <ModalHeader toggle={this.handleHide}>Login</ModalHeader>
 
-        {this.state.auth_data ?
+        {this.props.profile.user ?
           <React.Fragment>
-            <Modal.Body>
+            <ModalBody>
               <div className='row'>
                 <div className='col-sm-3'>
-                  <img className="avatar" src={`https://avatars.wdf.sap.corp/avatar/${this.state.auth_data['user']['name']}?size=100x100`}/>
+                  <img className="avatar" src={`https://avatars.wdf.sap.corp/avatar/${profile.user.name}?size=100x100`}/>
                 </div>
                 <div className='col-sm-9'>
-                  User: {this.state.auth_data['user']['name']}
+                  <span className='text-success'>You have been successfully logged in!</span>
                   <br/>
-                  Roles: {this.state.auth_data['roles'].map(r => r.name).join(', ')}/>
+                  Welcome {profile.user.description}
+                  <p className='small'>
+                    Your session expires at {(new Date(profile.user.expires_at)).toLocaleString()}
+                  </p>
                 </div>
               </div>
 
-            </Modal.Body>
-            <Modal.Footer>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={(e) => {e.preventDefault(); this.handleHide()}}>Close</button>
-            </Modal.Footer>
+            </ModalBody>
+            <ModalFooter>
+              <Button onClick={this.handleHide}>Close</Button>
+            </ModalFooter>
           </React.Fragment>
           :
-          <AuthForm
-            onLoggedIn={this.saveToken}
-            domain={process.env.AUTH_SCOPE_DOMAIN}
-            scopeDomainName={process.env.AUTH_SCOPE_DOMAIN}
-            scopeProjectName={process.env.AUTH_SCOPE_PROJECT}>
-            {({values, error, handleLogin, handleChange}) => {
+          <AuthForm handleSubmit={this.props.login}>
+            {({values, handleChange, isValid}) => {
               return <React.Fragment>
-                <Modal.Body>
+                <ModalBody>
+                  {profile.loginError &&
+                    <p className='alert alert-danger'>{profile.loginError}</p>
+                  }
                   <div className="form-group">
                     <label htmlFor="loginUser">User</label>
                     <input
@@ -105,17 +81,17 @@ export class AuthModal extends React.Component {
                       value={values.password || ''}
                       onChange={handleChange}/>
                   </div>
-                </Modal.Body>
-                <Modal.Footer>
+                </ModalBody>
+                <ModalFooter>
                   <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={(e) => {e.preventDefault(); this.handleHide()}}>Close</button>
-                  <button type="submit" className="btn btn-primary">Login</button>
-                </Modal.Footer>
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={!isValid || profile.isBeingLoggedOn}>
+                    {profile.isBeingLoggedOn ? 'Please wait...' : 'Login'}
+                  </button>
+                </ModalFooter>
               </React.Fragment>
-            }
-            }
+            }}
           </AuthForm>
         }
       </Modal>
