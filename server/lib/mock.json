@@ -263,7 +263,10 @@
         "project_name":"f5-test"
       },
       "agent":"f512-01",
-      "logs":[]
+      "logs":[
+        "2018-10-24 19:59:57,538.538 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.utils [-] purge_orphaned_nodes request 7c4178a4-9be7-4546-9d0a-35cfa14dca77 FAILED\n",
+        "2018-10-24 19:59:57,132.132 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.icontrol_driver [-] IO Error detected: purge_orphaned_nodes\n"
+        ]
     }
   ],
   "f512-01":[{
@@ -273,6 +276,12 @@
     "ip_address": "10.180.0.44",
     "operating_status": "ONLINE",
     "provisioning_status": "ACTIVE",
-    "logs":[]
+    "logs":[
+      "2018-10-24 19:59:57,538.538 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.utils [-] purge_orphaned_nodes request 7c4178a4-9be7-4546-9d0a-35cfa14dca77 FAILED\n",
+      "2018-10-24 19:59:57,132.132 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.icontrol_driver [-] IO Error detected: purge_orphaned_nodes\n",
+      "2018-10-24 13:59:48,928.928 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.utils [-] purge_orphaned_nodes request 3abe5732-3368-49f5-9552-0af5be304c8b FAILED\n2018-10-24 17:59:52,273.273 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.icontrol_driver [-] IO Error detected: purge_orphaned_nodes\n",
+      "2018-10-24 12:00:01,642.642 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.icontrol_driver [-] IO Error detected: purge_orphaned_nodes\n",
+      "2018-10-24 11:41:07,145.145 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.agent_manager   File \"/var/lib/openstack/local/lib/python2.7/site-packages/oslo_messaging/transport.py\", line 91, in _send\n"
+    ]
   }]
 }
