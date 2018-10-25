@@ -4,8 +4,10 @@ var router = require('express').Router();
 var fs = require('fs')
 var path = require('path');
 
-let rawdata = fs.readFileSync(path.join(__dirname, '../../lib/mock.json'));
-let jsonMock = JSON.parse(rawdata);
+let rawMockData = fs.readFileSync(path.join(__dirname, '../../lib/mock.json'));
+let rawDependenciesData = fs.readFileSync(path.join(__dirname, '../../lib/mock_dependencies.json'));
+let jsonMock = JSON.parse(rawMockData);
+let jsonDependenciesMock = JSON.parse(rawDependenciesData);
 
 router.get("/", (req, res) =>
   res.json(jsonMock)
@@ -18,11 +20,20 @@ router.get('/dns/:id', (req, res) => {
 });
 
 router.get("/search/:id", (req, res) => {
-  let projectMock = jsonMock[req.params.id]
-  if (projectMock == null) {
+  let obj = jsonMock[req.params.id]
+  if (obj == null) {
     res.status(404).send('Not found');
   } else {
-    res.json(projectMock)
+    res.json(obj)
+  }
+});
+
+router.get("/search/:id/dependencies", (req, res) => {
+  let obj = jsonDependenciesMock[req.params.id]
+  if (obj == null) {
+    res.status(404).send('Not found');
+  } else {
+    res.json(obj)
   }
 });
 

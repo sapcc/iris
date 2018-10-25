@@ -1,0 +1,23 @@
+{
+  "a04c0068-3d0d-4c79-aa56-d95946f03ef7":[
+    {"id":"e2605d69-bde4-48a1-94a5-cc6b685ba684", "name":"10.236.36.157","type":"floatingip"},
+    {"id":"e9141fb24eee4b3e9f25ae69cda31132", "name":"cc-demo","type":"project"}
+
+  ],
+  "e9141fb24eee4b3e9f25ae69cda31132":[
+    {"id":"f759e098-5431-4664-b328-8b0702bc136d", "name":"a1","type":"server"},
+    {"id":"e9141fb24eee4b3e9f25ae69cda31132-a991036aebea8d7738bb908202196652ed22841f58cd4de18db1acaeb26c4208-71c75e94010f4f2f8c2047e1e9514da3", "name":"admin","type":"project_group_role_assignment"},
+    {"id":"479057c2-9466-4d21-aa7a-c6dcfdde7273", "name":"glance-test","type":"image"},
+    {"id":"a7ec6c35-4e17-4e97-aa2b-0d93e56bb6c7", "name":"cc-demo_private","type":"network"},
+    {"id":"123456-1234-1234-1234-12345678987654", "name":"cc-demo","type":"masterdata"}
+  ],
+  "e2605d69-bde4-48a1-94a5-cc6b685ba684": [
+    {"id":"669277bf-49ba-4de0-99e9-4a8cae58796c", "name":"loadbalancer-c9b6fd5f-0f16-431e-856c-4395aa9ad71e","type":"port"}
+  ],
+  "669277bf-49ba-4de0-99e9-4a8cae58796c":[
+    {"id":"eaa13da1-e37f-4711-939b-70c8d3c547fb", "name":"loadbalancer test","type":"loadbalancer"}
+  ],
+  "eaa13da1-e37f-4711-939b-70c8d3c547fb":[
+    {"id":"123456-1234-3212-939b-abcdefghijklmn", "name":"f512-01","type":"provider"}
+  ]
+}
