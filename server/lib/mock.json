@@ -30,10 +30,10 @@
       }
     }
   ],
-  "masterdata":{
-    "project_id":"ac385dad41084c72aa999bcceb06b5a1",
-    "project_name":"twogo-lab",
-    "description":"For development activities in a private SAP-only network",
+  "e9141fb24eee4b3e9f25ae69cda31132":[{
+    "project_id":"e9141fb24eee4b3e9f25ae69cda31132",
+    "project_name":"f5-test",
+    "description":"Project for F5 specific testing",
     "parent_id":"ab5617f02fef4ba7937bda0c58da1471",
     "domain_id":"ab5617f02fef4ba7937bda0c58da1471",
     "cost_object":{"name":"123456789", "type":"CC", "inherited":false, "solution":""},
@@ -51,9 +51,10 @@
     "business_criticality":"prod",
     "region":"eu-de-1",
     "is_complete":true,
-    "id":""
-  },
-  "10.236.36.157":{
+    "id":"",
+    "cached_object_type":"masterdata"
+  }],
+  "10.236.36.157":[{
     "router_id":"42f0af62-3769-4ed5-932f-55d3c7d5baaf",
     "status":"ACTIVE",
     "description":"",
@@ -73,7 +74,7 @@
       "project_id":"d6212fdc832747099b8e12ccf4fd5bd8",
       "project_name":"f5-test"
     }
-  },
+  }],
   "10.180.0.44":[
     {
       "allowed_address_pairs":[],
@@ -261,9 +262,17 @@
         "project_id":"d6212fdc832747099b8e12ccf4fd5bd8",
         "project_name":"f5-test"
       },
-      "provider":"f5networks (f512-01)",
-      "logs":""
+      "agent":"f512-01",
+      "logs":[]
     }
   ],
-  "f5networks (f512-01)":{}
+  "f512-01":[{
+    "name":"eaa13da1-e37f-4711-939b-70c8d3c547fb",
+    "description":"proxy-proto",
+    "id":"eaa13da1-e37f-4711-939b-70c8d3c547fb",
+    "ip_address": "10.180.0.44",
+    "operating_status": "ONLINE",
+    "provisioning_status": "ACTIVE",
+    "logs":[]
+  }]
 }

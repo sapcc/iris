@@ -18,9 +18,12 @@ router.get('/dns/:id', (req, res) => {
 });
 
 router.get("/search/:id", (req, res) => {
-  let searchValue = req.params.id
-  let projectMock = jsonMock[searchValue]
-  res.json(projectMock)
+  let projectMock = jsonMock[req.params.id]
+  if (projectMock == null) {
+    res.status(404).send('Not found');
+  } else {
+    res.json(projectMock)
+  }
 });
 
 module.exports = router;
