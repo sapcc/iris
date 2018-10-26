@@ -7,11 +7,11 @@ const validateAuthentication = (req) =>
   new Promise((resolve, reject) => {
     identityClient.validateCookieToken(req.cookies.auth_token)
       .then(token => resolve(token))
-      .catch(error =>
+      .catch(error => {
         identityClient.validateSsoCertificate(req.header)
           .then(token => resolve(token))
           .catch(e => reject(e))
-      )
+      })
   })
 ;
 
@@ -20,20 +20,13 @@ router.use((req, res, next) => {
   // for all api requests except root, login and logout
   if(['/','/auth/login','/auth/logout'].indexOf(req.path)>=0) return next()
 
-  console.log(':::::::::::::::::::::validateAuthtentication', 'req.get("HTTP_SSL_CLIENT_VERIFY")', req.get("HTTP_SSL_CLIENT_VERIFY"))
-  console.log(':::::::::::::::::::::validateAuthtentication', 'req.get("http_ssl_client_verify")', req.get("http_ssl_client_verify"))
-  console.log(':::::::::::::::::::::validateAuthtentication', 'req.header("ssl-client-cert")', req.header("ssl-client-cert"))
-  console.log(':::::::::::::::::::::validateAuthtentication', 'req.header("ssl-client-verify")', req.header("ssl-client-verify"))
-  console.log(':::::::::::::::::::::validateAuthtentication', 'env["HTTP_SSL_CLIENT_VERIFY"]', process.env['HTTP_SSL_CLIENT_VERIFY'])
-  console.log(':::::::::::::::::::::validateAuthtentication', 'env["HTTP_SSL_CLIENT_CERT"]', process.env['HTTP_SSL_CLIENT_CERT'])
-
   validateAuthentication(req).then(token => {
     // raise 403 error if user has no permissions
     if(!isAllowed(token.data)) return next(createError(403))
     req.tokenData = token.data
     req.authToken = token.authToken
     next()
-  }).catch(error => next(error))
+  }).catch(error => {console.log(error); next(error)})
 })
 
 

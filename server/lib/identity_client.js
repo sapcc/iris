@@ -1,7 +1,7 @@
 const axios = require('axios');
 var {apiRequest} = require('./api_helpers');
 var {Token} = require('./token')
-
+var createError = require('http-errors');
 
 module.exports = (endpoint) => {
   const buildScopeParams = (scopeOptions = {}) => {
@@ -37,19 +37,19 @@ module.exports = (endpoint) => {
     return null
   }
 
+  const validateSsoCertificate = (header) => {
+    var verify = header['ssl-client-cert']
+    var cert = header['ssl-client-cert']
 
-  const validateSsoCertificate = (env) => {
     // return false unless succes or no x509 certificate given
-    if(env['ssl-client-verify'] != 'SUCCESS' ||
-       !env['ssl-client-cert'] ||
-       env['ssl-client-cert'].trim().length == 0) {
+    if(verify != 'SUCCESS' || !cert || cert.trim().length == 0) {
       return Promise.reject(createError(401))
     }
 
     // set headers for authentication call
     headers = {
-      'SSL-Client-Verify': env['ssl-client-verify'],
-      'SSL-Client-Cert': env['ssl-client-cert'],
+      'SSL-Client-Verify': verify,
+      'SSL-Client-Cert': cert,
       'X-User-Domain-Name': process.env.AUTH_SCOPE_DOMAIN
     }
     // set scope infos
