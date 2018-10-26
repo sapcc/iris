@@ -1,4 +1,7 @@
 const axios = require('axios');
+var {apiRequest} = require('./api_helpers');
+var {Token} = require('./token')
+
 
 module.exports = (endpoint) => {
   const buildScopeParams = (scopeOptions = {}) => {
@@ -34,18 +37,23 @@ module.exports = (endpoint) => {
     return null
   }
 
-  const validateAuthToken = (authToken) => {
-    return axios.get(`${endpoint}/v3/auth/tokens`, {
-      headers: {'X-Subject-Token': authToken, 'X-Auth-Token': authToken}
-    })
-  }
+  const validateAuthToken = (authToken) =>
+    apiRequest(
+      axios.get(`${endpoint}/v3/auth/tokens`, {
+        headers: {'X-Subject-Token': authToken, 'X-Auth-Token': authToken}
+      }).then(response =>
+        new Token(response.data.token, response.headers['x-subject-token'])
+      )
+    )
+  ;
 
-  const user = (authToken,id) => {
-    console.log('id',id)
-    return axios.get(`${endpoint}/v3/users/${id}`, {
-      headers: {'X-Auth-Token': authToken}
-    })
-  }
+  const user = (authToken,id) =>
+    apiRequest(
+      axios.get(`${endpoint}/v3/users/${id}`, {
+        headers: {'X-Auth-Token': authToken}
+      }).then(response => response.data.user)
+    )
+  ;
 
   const createTokenByPassword = (options = {}) => {
     let auth = {
@@ -66,12 +74,37 @@ module.exports = (endpoint) => {
     let scope = buildScopeParams(options)
     if (scope) auth["scope"] = scope
 
-    return axios.post(`${endpoint}/v3/auth/tokens?nocatalog`, {auth})
+    return apiRequest(
+      axios.post(`${endpoint}/v3/auth/tokens?nocatalog`, {auth})
+        .then(response =>
+          new Token(response.data.token, response.headers['x-subject-token'])
+        )
+    )
+  }
+
+  const createTokenByExternal = (headers = {}, scope=nil) => {
+    let auth = {
+      "identity": {
+        "methods": ["external"],
+        "external": {}
+      },
+      'scope': scope ? buildScopeParams(scope) : 'unscoped'
+    }
+
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json'
+
+    return apiRequest(
+      axios.post(`${endpoint}/v3/auth/tokens?nocatalog`, {auth}, {headers})
+        .then(response =>
+          new Token(response.data.token, response.headers['x-subject-token'])
+        )
+    )
   }
 
   return {
     createTokenByPassword,
     validateAuthToken,
+    createTokenByExternal,
     user
   }
 }
