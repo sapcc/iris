@@ -40,16 +40,16 @@ module.exports = (endpoint) => {
 
   const validateSsoCertificate = (env) => {
     // return false unless succes or no x509 certificate given
-    if(env['ssl_client_verify'] != 'SUCCESS' ||
-       !env['ssl_client_cert'] ||
-       env['ssl_client_cert'].trim().length == 0) {
+    if(env['ssl-client-verify'] != 'SUCCESS' ||
+       !env['ssl-client-cert'] ||
+       env['ssl-client-cert'].trim().length == 0) {
       return Promise.reject(createError(401))
     }
 
     // set headers for authentication call
     headers = {
-      'SSL-Client-Verify': env['ssl_client_verify'],
-      'SSL-Client-Cert': env['ssl_client_cert'],
+      'SSL-Client-Verify': env['ssl-client-verify'],
+      'SSL-Client-Cert': env['ssl-client-cert'],
       'X-User-Domain-Name': process.env.AUTH_SCOPE_DOMAIN
     }
     // set scope infos
