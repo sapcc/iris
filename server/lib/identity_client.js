@@ -38,7 +38,7 @@ module.exports = (endpoint) => {
   }
 
   const validateSsoCertificate = (header) => {
-    var verify = header['ssl-client-cert']
+    var verify = header['ssl-client-verify']
     var cert = header['ssl-client-cert']
 
     console.log('::::::::::::::::::::::verify', verify)
