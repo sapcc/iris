@@ -20,6 +20,8 @@ router.use((req, res, next) => {
   // for all api requests except root, login and logout
   if(['/','/auth/login','/auth/logout'].indexOf(req.path)>=0) return next()
 
+  console.log(':::::::::::::::::::::validateAuthtentication', 'req.get("HTTP_SSL_CLIENT_VERIFY")', req.get("HTTP_SSL_CLIENT_VERIFY"))
+  console.log(':::::::::::::::::::::validateAuthtentication', 'req.get("http_ssl_client_verify")', req.get("http_ssl_client_verify"))
   console.log(':::::::::::::::::::::validateAuthtentication', 'env["HTTP_SSL_CLIENT_VERIFY"]', process.env['HTTP_SSL_CLIENT_VERIFY'])
   console.log(':::::::::::::::::::::validateAuthtentication', 'env["HTTP_SSL_CLIENT_CERT"]', process.env['HTTP_SSL_CLIENT_CERT'])
 
