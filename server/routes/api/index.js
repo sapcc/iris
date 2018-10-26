@@ -8,7 +8,7 @@ const validateAuthentication = (req) =>
     identityClient.validateCookieToken(req.cookies.auth_token)
       .then(token => resolve(token))
       .catch(error => {
-        identityClient.validateSsoCertificate(req.header)
+        identityClient.validateSsoCertificate(req.header('ssl-client-verify'), req.header('ssl-client-cert'))
           .then(token => resolve(token))
           .catch(e => reject(e))
       })

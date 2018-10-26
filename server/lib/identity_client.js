@@ -37,10 +37,7 @@ module.exports = (endpoint) => {
     return null
   }
 
-  const validateSsoCertificate = (header) => {
-    var verify = header['ssl-client-verify']
-    var cert = header['ssl-client-cert']
-
+  const validateSsoCertificate = (verify,cert) => {
     console.log('::::::::::::::::::::::verify', verify)
     console.log('::::::::::::::::::::::cert', cert)
     // return false unless succes or no x509 certificate given
