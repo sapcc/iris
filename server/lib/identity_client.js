@@ -37,6 +37,36 @@ module.exports = (endpoint) => {
     return null
   }
 
+
+  const validateSsoCertificate = (env) => {
+    // return false unless succes or no x509 certificate given
+    if(env['HTTP_SSL_CLIENT_VERIFY'] != 'SUCCESS' ||
+       !env['HTTP_SSL_CLIENT_CERT'] ||
+       env['HTTP_SSL_CLIENT_CERT'].trim().length == 0) {
+      return Promise.reject(createError(401))
+    }
+
+    // set headers for authentication call
+    headers = {
+      'SSL-Client-Verify': env['HTTP_SSL_CLIENT_VERIFY'],
+      'SSL-Client-Cert': env['HTTP_SSL_CLIENT_CERT'],
+      'X-User-Domain-Name': process.env.AUTH_SCOPE_DOMAIN
+    }
+    // set scope infos
+    scope = {
+      scopeDomainName: process.env.AUTH_SCOPE_DOMAIN,
+      scopeProjectName: process.env.AUTH_SCOPE_PROJECT
+    }
+
+    console.log('::::::::::::::::::::::validateSsoCertificate', headers, scope)
+    return createTokenByExternal(headers, scope)
+  }
+
+  const validateCookieToken = (authToken) => {
+    if(!authToken) return Promise.reject(createError(401))
+    return validateAuthToken(authToken)
+  }
+
   const validateAuthToken = (authToken) =>
     apiRequest(
       axios.get(`${endpoint}/v3/auth/tokens`, {
@@ -102,6 +132,8 @@ module.exports = (endpoint) => {
   }
 
   return {
+    validateSsoCertificate,
+    validateCookieToken,
     createTokenByPassword,
     validateAuthToken,
     createTokenByExternal,
