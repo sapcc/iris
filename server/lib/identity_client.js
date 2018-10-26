@@ -41,6 +41,8 @@ module.exports = (endpoint) => {
     var verify = header['ssl-client-cert']
     var cert = header['ssl-client-cert']
 
+    console.log('::::::::::::::::::::::verify', verify)
+    console.log('::::::::::::::::::::::cert', cert)
     // return false unless succes or no x509 certificate given
     if(verify != 'SUCCESS' || !cert || cert.trim().length == 0) {
       return Promise.reject(createError(401))
