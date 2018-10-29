@@ -11,11 +11,14 @@ import {AuthModal} from './auth/modal'
 
 import SearchBar from './search/search_bar'
 import SearchResultsList from './search/search_results_list'
+import SearchHistory from './search/search_history'
+
 
 
 const Search = () => (
   <React.Fragment>
     <SearchBar/>
+    <SearchHistory/>
     <SearchResultsList/>
   </React.Fragment>
 )

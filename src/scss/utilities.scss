@@ -3,5 +3,22 @@
 // ---------------------------------------------------------------------------------
 
 .u-text-info {
-  color: $gray-600;
+  color: $gray-500;
+}
+
+.u-text-small {
+  font-size: $font-size-sm;
+}
+
+.u-text-highlight {
+  background-color: $hover-light-blue;
+}
+
+.u-table-cell-maxwidth {
+  width: 100%;
+}
+
+.u-table-cell-snug {
+  width: 1px;
+  white-space: nowrap;
 }

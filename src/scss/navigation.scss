@@ -44,6 +44,15 @@
 
 .navbar-inverse {
 
+  a {
+    &, &:active, &:hover {
+      color: $white;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .dropdown-menu {
     background-color: $inverse-dropdown-bg;
 

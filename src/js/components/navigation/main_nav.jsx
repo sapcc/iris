@@ -14,9 +14,9 @@ export default ({profile}) =>
         :
         profile.user
           ? <React.Fragment>
-              <Link className='text-light' to='/profile'>Profile</Link>
+              <Link to='/profile'>Profile</Link>
             </React.Fragment>
-          : <Link className='text-light' to='/login'>Login</Link>
+          : <Link to='/login'>Login</Link>
       }
     </div>
   </nav>
