@@ -13,13 +13,13 @@ router.get("/", (req, res) =>
   res.json(jsonMock)
 );
 
-router.get('/dns/:id', (req, res) => {
-   let dnsMock = jsonMock["dnsLookup"]
-   dnsMock[0]["name"] = req.params.id
+router.get('/search?:term', (req, res) => {
+   let dnsMock = jsonMock["a04c0068-3d0d-4c79-aa56-d95946f03ef7"]
+   dnsMock["name"] = req.query.term
    res.json(dnsMock)
 });
 
-router.get("/search/:id", (req, res) => {
+router.get("/object/:id", (req, res) => {
   let obj = jsonMock[req.params.id]
   if (obj == null) {
     res.status(404).send('Not found');
@@ -28,7 +28,7 @@ router.get("/search/:id", (req, res) => {
   }
 });
 
-router.get("/search/:id/dependencies", (req, res) => {
+router.get("/object/:id/dependencies", (req, res) => {
   let obj = jsonDependenciesMock[req.params.id]
   if (obj == null) {
     res.status(404).send('Not found');
