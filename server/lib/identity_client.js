@@ -38,8 +38,6 @@ module.exports = (endpoint) => {
   }
 
   const validateSsoCertificate = (verify,cert) => {
-    console.log('::::::::::::::::::::::verify', verify)
-    console.log('::::::::::::::::::::::cert', cert)
     // return false unless succes or no x509 certificate given
     if(verify != 'SUCCESS' || !cert || cert.trim().length == 0) {
       return Promise.reject(createError(401))
@@ -57,7 +55,6 @@ module.exports = (endpoint) => {
       scopeProjectName: process.env.AUTH_SCOPE_PROJECT
     }
 
-    console.log('::::::::::::::::::::::validateSsoCertificate', headers, scope)
     return createTokenByExternal(headers, scope)
   }
 
