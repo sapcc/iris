@@ -19,7 +19,7 @@ router.get('/search?:term', (req, res) => {
    res.json([dnsMock])
 });
 
-router.get("/object/:id", (req, res) => {
+router.get("/objects/:id", (req, res) => {
   let obj = jsonMock[req.params.id]
   if (obj == null) {
     res.status(404).send('Not found');
@@ -28,7 +28,7 @@ router.get("/object/:id", (req, res) => {
   }
 });
 
-router.get("/object/:id/dependencies", (req, res) => {
+router.get("/objects/:id/dependencies", (req, res) => {
   let obj = jsonDependenciesMock[req.params.id]
   if (obj == null) {
     res.status(404).send('Not found');
