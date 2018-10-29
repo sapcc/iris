@@ -16,7 +16,7 @@ router.get("/", (req, res) =>
 router.get('/search?:term', (req, res) => {
    let dnsMock = jsonMock["a04c0068-3d0d-4c79-aa56-d95946f03ef7"]
    dnsMock["name"] = req.query.term
-   res.json(dnsMock)
+   res.json([dnsMock])
 });
 
 router.get("/object/:id", (req, res) => {
