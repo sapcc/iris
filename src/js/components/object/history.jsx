@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 
 export default ({objectHistory,currentItem}) => {
-  const label = (item) => item.name || item.floating_ip_address || item.object_type
+  const label = (item) => item.name || item.floating_ip_address || item.object_type || item.id
 
   return(
     <div className="container-fluid">
