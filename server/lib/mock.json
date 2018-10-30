@@ -61,10 +61,6 @@
         "scraped_at":1540471483
       }
     ],
-    "domain":{
-      "id":"2bac466eed364d8a92e477459e908736",
-      "name":"monsoon3"
-    },
     "search_label":"",
     "tags":[],
     "parent_id":"2bac466eed364d8a92e477459e908736",
@@ -309,7 +305,101 @@
     "ip_address": "10.180.0.44",
     "operating_status": "ONLINE",
     "provisioning_status": "ACTIVE",
+    "object_type":"lbaa-agent",
+    "domain_id":"2bac466eed364d8a92e477459e908736",
+    "domain_name":"monsoon3",
+    "project_id":"e9141fb24eee4b3e9f25ae69cda31132",
+    "project_name":"cc-demo",
+    "region":"qa-de-1"
+  },
+  "qa-de-1b-f512-01-cp090.cc.qa-de-1.cloud.sap":{
+    "id":"qa-de-1b-f512-01-cp090.cc.qa-de-1.cloud.sap",
+    "name": "qa-de-1b-f512-01-cp090",
+    "serial-number":"f5-eicq-xvlu",
+    "version":"BIG-IP 13.1.1 Build 0.0.4 Final",
+    "cpu-count":2,
+    "active-cpus":1,
+    "device-list":[
+      {
+        "id":"qa-de-1a-f512-01-cp090.cc.qa-de-1.cloud.sap",
+        "status":"active",
+        "address":"10.46.100.172",
+        "hostname":"qa-de-1a-f512-01-cp090.cc.qa-de-1.cloud.sap",
+        "version":"BIG-IP v13.1.1 (Build 0.0.4)",
+        "time-delta":0
+      },
+      {
+        "id":"qa-de-1b-f512-01-cp090.cc.qa-de-1.cloud.sap",
+        "status":"standby",
+        "address":"10.46.100.173",
+        "hostname":"qa-de-1b-f512-01-cp090.cc.qa-de-1.cloud.sap",
+        "version":"BIG-IP v13.1.1 (Build 0.0.4)",
+        "time-delta":0
+      }
+    ],
     "object_type":"f5-device"
+  },
+  "qa-de-1a-f512-01-cp090.cc.qa-de-1.cloud.sap":{
+    "id":"qa-de-1a-f512-01-cp090.cc.qa-de-1.cloud.sap",
+    "name": "qa-de-1a-f512-01-cp090",
+    "serial-number":"f5-eicq-nmlpo",
+    "version":"BIG-IP 13.1.1 Build 0.0.4 Final",
+    "cpu-count":2,
+    "active-cpus":1,
+    "device-list":[
+      {
+        "id":"qa-de-1a-f512-01-cp090.cc.qa-de-1.cloud.sap",
+        "status":"active",
+        "address":"10.46.100.172",
+        "hostname":"qa-de-1a-f512-01-cp090.cc.qa-de-1.cloud.sap",
+        "version":"BIG-IP v13.1.1 (Build 0.0.4)",
+        "time-delta":0
+      },
+      {
+        "id":"qa-de-1b-f512-01-cp090.cc.qa-de-1.cloud.sap",
+        "status":"standby",
+        "address":"10.46.100.173",
+        "hostname":"qa-de-1b-f512-01-cp090.cc.qa-de-1.cloud.sap",
+        "version":"BIG-IP v13.1.1 (Build 0.0.4)",
+        "time-delta":0
+      }
+    ],
+    "object_type":"f5-device"
+  },
+  "d6212fdc832747099b8e12ccf4fd5bd8":{
+    "is_domain":false,
+    "description":"Project for F5 specific testing",
+    "links":{
+      "self":"http://keystone.monsoon3.svc.kubernetes.qa-de-1.cloud.sap:5000/v3/projects/d6212fdc832747099b8e12ccf4fd5bd8"
+    },
+    "enabled":true,
+    "id":"d6212fdc832747099b8e12ccf4fd5bd8",
+    "name":"f5-test",
+    "object_type":"project",
+    "project_id":null,
+    "search_label":"",
+    "services":[
+      {
+        "type":"network",
+        "area":"network",
+        "resources":[
+          {
+            "name":"pools",
+            "category":"loadbalancing",
+            "quota":10,
+            "usage":2
+          }
+        ],
+        "scraped_at":1540893215
+      }
+    ],
+    "tags":[],
+    "parent_id":"2bac466eed364d8a92e477459e908736",
+    "domain_id":"2bac466eed364d8a92e477459e908736",
+    "domain_name":"monsoon3",
+    "project_id":"d6212fdc832747099b8e12ccf4fd5bd8",
+    "project_name":"f5-test",
+    "region":"qa-de-1"
   },
   "AWa_Q-Vs_w-91XetNcWO":{
     "id":"AWa_Q-Vs_w-91XetNcWO",
@@ -366,5 +456,41 @@
     "object_type":"log",
     "loglevel":"ERROR",
     "log":"2018-10-24 11:41:07,145.145 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.agent_manager   File \"/var/lib/openstack/local/lib/python2.7/site-packages/oslo_messaging/transport.py\", line 91, in _send\n"
+  },
+  "alarm1":{
+    "alertname":"OpenstackLbaasApiDown",
+    "alertstate":"firing",
+    "severity": "critical",
+    "tier": "openstack",
+    "service": "neutron",
+    "context": "lbaas",
+    "dashboard": "ccloud-health-blackbox-details",
+    "meta": "API is down for 20 min. See Sentry for details.",
+    "sentry": "blackbox/?query=test_lbaas",
+    "playbook": "docs/devops/alert/lbaas/#lbaas"
+  },
+  "alarm2":{
+    "agent_type":"Loadbalancerv2 agent",
+    "alertname":"OpenstackNeutronMonitorAgentHeartbeat",
+    "alertstate":"firing",
+    "context":"Agent Heartbeat",
+    "dashboard":"Neutron",
+    "meta":"Agent Loadbalancerv2 agent Heartbeat is above 75secs in ",
+    "playbook":"docs/support/playbook/neutron/agent_heartbeat.html",
+    "service":"Neutron",
+    "severity":"warning",
+    "tier":"openstack"
+  },
+  "alarm3":{
+    "alertname":"OpenstackLbaasApiFlapping",
+    "alertstate":"firing",
+    "severity": "critical",
+    "tier": "openstack",
+    "service": "neutron",
+    "context": "lbaas",
+    "dashboard": "ccloud-health-blackbox-details",
+    "meta": "API is down for 20 min. See Sentry for details.",
+    "sentry": "blackbox/?query=test_lbaas",
+    "playbook": "docs/devops/alert/lbaas/#lbaas"
   }
 }
