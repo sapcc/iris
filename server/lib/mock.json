@@ -298,18 +298,59 @@
     "project_name":"cc-demo",
     "region":"qa-de-1"
   },
-  "123456-1234-3212-939b-abcdefghijklmn":{
-    "name":"f512-01",
-    "description":"proxy-proto",
-    "id":"eaa13da1-e37f-4711-939b-70c8d3c547fb",
-    "ip_address": "10.180.0.44",
-    "operating_status": "ONLINE",
-    "provisioning_status": "ACTIVE",
+  "ead212a0-de8a-4783-b8bc-dbfe915f009e":{
+    "name": "f512-01",
+    "binary": "f5-oslbaasv2-agent",
+    "description": null,
+    "availability_zone": null,
+    "created_at": "2018-08-07 13:35:21.603803",
+    "admin_state_up": true,
+    "alive": true,
+    "id": "ead212a0-de8a-4783-b8bc-dbfe915f009e",
+    "topic": "f5-lbaasv2-process-on-agent",
+    "host": "f512-01",
+    "agent_type": "Loadbalancerv2 agent",
+    "started_at": "2018-10-30 10:56:40.839415",
+    "heartbeat_timestamp": "2018-10-30 13:35:41.190345",
+    "configurations": {
+      "icontrol_endpoints": {
+        "10.46.100.173": {
+          "device_name": "qa-de-1b-f512-01-cp090.cc.qa-de-1.cloud.sap",
+          "platform": "",
+          "version": "13.1.1",
+          "serial_number": "f5-eicq-xvlu"
+        },
+        "10.46.100.172": {
+          "device_name": "qa-de-1a-f512-01-cp090.cc.qa-de-1.cloud.sap",
+          "platform": "",
+          "version": "13.1.1",
+          "serial_number": "f5-trwx-rbar"
+        }
+      },
+      "request_queue_depth": 0,
+      "environment_prefix": "Project",
+      "tunneling_ips": [],
+      "network_segment_physical_network": "cp090",
+      "common_networks": {},
+      "tunnel_types": [
+        "gre",
+        "vxlan"
+      ],
+      "f5_common_external_networks": true,
+      "environment_capacity_score": 0.002,
+      "services": 2,
+      "environment_group_number": 4,
+      "device_drivers": [
+        "f5-lbaasv2-icontrol"
+      ],
+      "bridge_mappings": {
+        "default": "portchannel1",
+        "bb91": "portchannel1",
+        "cp090": "portchannel1"
+      },
+      "global_routed_mode": false
+    },
     "object_type":"lbaa-agent",
-    "domain_id":"2bac466eed364d8a92e477459e908736",
-    "domain_name":"monsoon3",
-    "project_id":"e9141fb24eee4b3e9f25ae69cda31132",
-    "project_name":"cc-demo",
     "region":"qa-de-1"
   },
   "qa-de-1b-f512-01-cp090.cc.qa-de-1.cloud.sap":{
@@ -407,6 +448,7 @@
     "timestamp":"October 29th 2018, 10:59:48.000",
     "object_type":"log",
     "loglevel":"ERROR",
+    "kubernetes.labels.name":"neutron-f5agent-f512-01",
     "log":"2018-10-24 19:59:57,538.538 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.utils [-] purge_orphaned_nodes request 7c4178a4-9be7-4546-9d0a-35cfa14dca77 FAILED\n"
   },
   "AWa_Q-Vs_w-91XetNcWN":{
@@ -415,6 +457,7 @@
     "timestamp":"October 29th 2018, 10:59:48.000",
     "object_type":"log",
     "loglevel":"ERROR",
+    "kubernetes.labels.name":"neutron-f5agent-f512-01",
     "log":"2018-10-24 19:59:57,132.132 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.icontrol_driver [-] IO Error detected: purge_orphaned_nodes\n"
   },
   "AWa_J03GU_IHW2IyCn_H":{
@@ -423,6 +466,7 @@
     "timestamp":"October 29th 2018, 10:28:35.000",
     "object_type":"log",
     "loglevel":"ERROR",
+    "kubernetes.labels.name":"neutron-f5agent-f512-01",
     "log":"2018-10-24 19:59:57,538.538 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.utils [-] purge_orphaned_nodes request 7c4178a4-9be7-4546-9d0a-35cfa14dca77 FAILED\n"
   },
   "AWa_EUdK-279AToWEmQQ":{
@@ -431,6 +475,7 @@
     "timestamp":"October 29th 2018, 10:04:29.000",
     "object_type":"log",
     "loglevel":"ERROR",
+    "kubernetes.labels.name":"neutron-f5agent-f512-02",
     "log":"2018-10-24 19:59:57,132.132 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.icontrol_driver [-] IO Error detected: purge_orphaned_nodes\n"
   },
   "AWa_EUdK-279AToWEmQN":{
@@ -439,6 +484,7 @@
     "timestamp":"October 29th 2018, 10:04:29.000",
     "object_type":"log",
     "loglevel":"ERROR",
+    "kubernetes.labels.name":"neutron-f5agent-f512-02",
     "log":"2018-10-24 13:59:48,928.928 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.utils [-] purge_orphaned_nodes request 3abe5732-3368-49f5-9552-0af5be304c8b FAILED\n2018-10-24 17:59:52,273.273 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.icontrol_driver [-] IO Error detected: purge_orphaned_nodes\n"
   },
   "AWa_EMZc-279AToWEkSQ":{
@@ -447,6 +493,7 @@
     "timestamp":"October 29th 2018, 10:03:59.000",
     "object_type":"log",
     "loglevel":"ERROR",
+    "kubernetes.labels.name":"neutron-f5agent-f512-02",
     "log":"2018-10-24 12:00:01,642.642 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.icontrol_driver [-] IO Error detected: purge_orphaned_nodes\n"
   },
   "AWa_EMZc-279AToWEkSN":{
@@ -455,42 +502,19 @@
     "timestamp":"October 29th 2018, 10:03:59.000",
     "object_type":"log",
     "loglevel":"ERROR",
+    "kubernetes.labels.name":"neutron-f5agent-f512-02",
     "log":"2018-10-24 11:41:07,145.145 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.agent_manager   File \"/var/lib/openstack/local/lib/python2.7/site-packages/oslo_messaging/transport.py\", line 91, in _send\n"
   },
   "alarm1":{
-    "alertname":"OpenstackLbaasApiDown",
+    "alertname":"F5DeviceNetworkConnectivityIssue",
     "alertstate":"firing",
     "severity": "critical",
-    "tier": "openstack",
-    "service": "neutron",
-    "context": "lbaas",
+    "tier": "F5 Networks",
+    "service": "lbaas",
+    "context": "network connectivity",
     "dashboard": "ccloud-health-blackbox-details",
-    "meta": "API is down for 20 min. See Sentry for details.",
-    "sentry": "blackbox/?query=test_lbaas",
-    "playbook": "docs/devops/alert/lbaas/#lbaas"
-  },
-  "alarm2":{
-    "agent_type":"Loadbalancerv2 agent",
-    "alertname":"OpenstackNeutronMonitorAgentHeartbeat",
-    "alertstate":"firing",
-    "context":"Agent Heartbeat",
-    "dashboard":"Neutron",
-    "meta":"Agent Loadbalancerv2 agent Heartbeat is above 75secs in ",
-    "playbook":"docs/support/playbook/neutron/agent_heartbeat.html",
-    "service":"Neutron",
-    "severity":"warning",
-    "tier":"openstack"
-  },
-  "alarm3":{
-    "alertname":"OpenstackLbaasApiFlapping",
-    "alertstate":"firing",
-    "severity": "critical",
-    "tier": "openstack",
-    "service": "neutron",
-    "context": "lbaas",
-    "dashboard": "ccloud-health-blackbox-details",
-    "meta": "API is down for 20 min. See Sentry for details.",
-    "sentry": "blackbox/?query=test_lbaas",
-    "playbook": "docs/devops/alert/lbaas/#lbaas"
+    "meta": "Network Connectivity is down for 1 min. See Sentry for details.",
+    "sentry": "blackbox/?query=test_lbaas_device_connectivity",
+    "playbook": "docs/devops/alert/lbaas/f5/device/#connectivity"
   }
 }
