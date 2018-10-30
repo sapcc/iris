@@ -17,7 +17,7 @@ export default () =>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr className="search-result">
           <td>Recordset A</td>
           <td><span className="u-text-highlight">twogo.c.eu-de-1.cloud.sap</span></td>
           <td><span className="u-text-info">zone_id: 572e0062-5223-4d69-b718-6b1fee2bd642 zone_name: <span className="u-text-highlight">twogo.c.eu-de-1.cloud.sap.</span></span></td>
@@ -31,7 +31,7 @@ export default () =>
             twogo-lab <span className="u-text-info u-text-small">(4d0477a019414ee08ad0fd11b777eee2)</span>
           </td>
         </tr>
-        <tr>
+        <tr className="search-result">
           <td>Recordset SOA</td>
           <td><span className="u-text-highlight">twogo.c.eu-de-1.cloud.sap</span></td>
           <td><span className="u-text-info">zone_id: 572e0062-5223-4d69-b718-6b1fee2bd642 zone_name: <span className="u-text-highlight">twogo.c.eu-de-1.cloud.sap.</span></span></td>
@@ -45,7 +45,7 @@ export default () =>
             twogo-lab <span className="u-text-info u-text-small">(4d0477a019414ee08ad0fd11b777eee2)</span>
           </td>
         </tr>
-        <tr>
+        <tr className="search-result">
           <td>Zone</td>
           <td><span className="u-text-highlight">twogo.c.eu-de-1.cloud.sap</span></td>
           <td><span className="u-text-info">email: david.hoeller@sap.com pool_id: 794ccc2c-d751-44fe-b57f-8894c9f5c842</span></td>

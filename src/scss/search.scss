@@ -3,5 +3,18 @@
 }
 
 .search-result {
-  padding: $layout-vertical-spacing/2 0;
+  cursor: pointer;
+
+  .u-text-highlight {
+    color: color-yiq($text-highlight-color);
+  }
+
+  &:hover {
+    background: $text-highlight-color;
+
+    .u-text-highlight {
+      background: darken($text-highlight-color, 15);
+      color: color-yiq(darken($text-highlight-color, 15));
+    }
+  }
 }
