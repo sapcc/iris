@@ -4,6 +4,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --mode=production",
     "test": "jest",
+    "integration": "cucumber-js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map  --host 0.0.0.0 --port 5000",
     "server": "nodemon server/index.js",
     "start": "NODE_ENV=development concurrently --kill-others \"npm run server\" \"npm run client\" \"webpack --watch\"",
@@ -34,8 +35,10 @@
     "autoprefixer": "^9.2.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
+    "chai": "^4.2.0",
     "concurrently": "^4.0.1",
     "css-loader": "^1.0.0",
+    "cucumber": "^5.0.2",
     "enzyme-adapter-react-16": "^1.6.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "jest": "^23.5.0",
