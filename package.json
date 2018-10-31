@@ -32,6 +32,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@fortawesome/fontawesome-pro": "^5.4.2",
     "autoprefixer": "^9.2.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",

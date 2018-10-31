@@ -1,7 +1,8 @@
-import ReactDOM from 'react-dom';
-import React from "react";
+import ReactDOM from 'react-dom'
+import React from "react"
 import "./scss/base.scss"
-import App from './js/containers/app';
+import '@fortawesome/fontawesome-pro/css/all.css'
+import App from './js/containers/app'
 
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'

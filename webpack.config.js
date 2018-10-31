@@ -26,8 +26,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /(\.scss|\.css)$/,
+        test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+      }, {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       }, {
         test: /\.js|.jsx$/,
         exclude: /(node_modules|bower_components)/,
@@ -41,13 +44,15 @@ module.exports = {
           }
         }
       }, {
-        test: /\.(ico|png|jpg|gif)$/,
-        use: ['file-loader']
-      },
-      {
-        test: /\.(png|jpg|svg)$/,
-        loader: 'url-loader'
-      },
+        test: /\.(ico|eot|ttf|woff|woff2)$/,
+        use: ['file-loader'],
+      }, {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
+      } ,
       { test: /\.jade$/, loader: 'jade-loader' }
     ]
   },
