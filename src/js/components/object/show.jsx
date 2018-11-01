@@ -7,8 +7,8 @@ export default ({item,dependencies}) =>
     <div className="row">
       <div className="col-md-3">
         <dl className="row">
-          <dt className="col-md-3">Name</dt>
-          <dd className="col-md-9">
+          <dt className="col-md-2">Name</dt>
+          <dd className="col-md-10">
             { item.name
               ?
               <strong>{item.name}</strong>
@@ -17,20 +17,20 @@ export default ({item,dependencies}) =>
             }
           </dd>
 
-          <dt className="col-md-3">ID</dt>
-          <dd className="col-md-9"><span className="u-text-info-dark font-weight-lightest">{item.id}</span></dd>
+          <dt className="col-md-2">ID</dt>
+          <dd className="col-md-10"><span className="u-text-info-dark font-weight-lightest">{item.id}</span></dd>
 
-          <dt className="col-md-3">Type</dt>
-          <dd className="col-md-9">{item.object_type}</dd>
+          <dt className="col-md-2">Type</dt>
+          <dd className="col-md-10">{item.object_type}</dd>
 
-          <dt className="col-md-3">Region</dt>
-          <dd className="col-md-9">{item.region}</dd>
+          <dt className="col-md-2">Region</dt>
+          <dd className="col-md-10">{item.region}</dd>
 
           {item.domain_name
             ?
             <React.Fragment>
-              <dt className="col-md-3">Domain</dt>
-              <dd className="col-md-9">{item.domain_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.domain_id}</span></dd>
+              <dt className="col-md-2">Domain</dt>
+              <dd className="col-md-10">{item.domain_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.domain_id}</span></dd>
             </React.Fragment>
             :
             null
@@ -39,8 +39,8 @@ export default ({item,dependencies}) =>
           {item.project_name
             ?
             <React.Fragment>
-              <dt className="col-md-3">Project</dt>
-              <dd className="col-md-9">{item.project_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.project_id}</span></dd>
+              <dt className="col-md-2">Project</dt>
+              <dd className="col-md-10">{item.project_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.project_id}</span></dd>
             </React.Fragment>
             :
             null
