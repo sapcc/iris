@@ -13,7 +13,6 @@ export default connect(
     console.log('ownProps',ownProps)
     return {
       showObjectDetails: (id) => {
-        dispatch(extendHistory(id))
         ownProps.history.push(`/objects/${id}`)
       }
     }

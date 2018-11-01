@@ -6,9 +6,12 @@ export default class ObjectDetails extends React.Component {
 
   state = {}
   static getDerivedStateFromProps(props, state){
-    props.extendHistory()
-    if(!props.item) props.loadObjectOnce()
-    if(!props.dependencies) props.loadDependenciesOnce()
+    if(state.id!=props.id) {
+      props.extendHistory()
+      if(!props.item) props.loadObjectOnce()
+      if(!props.dependencies) props.loadDependenciesOnce()
+      state['id'] = props.id
+    }
     return state
   }
 

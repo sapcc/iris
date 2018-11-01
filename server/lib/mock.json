@@ -515,5 +515,320 @@
     "meta": "Network Connectivity is down for 1 min. See Sentry for details.",
     "sentry": "blackbox/?query=test_lbaas_device_connectivity",
     "playbook": "docs/devops/alert/lbaas/f5/device/#connectivity"
+  },
+
+  "a7ec6c35-4e17-4e97-aa2b-0d93e56bb6c7": {
+    "admin_state_up": true,
+    "availability_zone_hints": [],
+    "availability_zones": [
+        "nova"
+    ],
+    "created_at": "2016-03-08T20:19:41",
+    "dns_domain": "my-domain.org.",
+    "id": "a7ec6c35-4e17-4e97-aa2b-0d93e56bb6c7",
+    "ipv4_address_scope": null,
+    "ipv6_address_scope": null,
+    "l2_adjacency": false,
+    "mtu": 1500,
+    "name": "cc-demo_private",
+    "port_security_enabled": true,
+    "project_id": "e9141fb24eee4b3e9f25ae69cda31132",
+    "qos_policy_id": "6a8454ade84346f59e8d40665f878b2e",
+    "revision_number": 1,
+    "router:external": false,
+    "shared": true,
+    "status": "ACTIVE",
+    "subnets": [
+        "54d6f61d-db07-451c-9ab3-b9609b6b6f0b"
+    ],
+    "tags": ["tag1,tag2"],
+    "tenant_id": "4fd44f30292945e481c7b8a0c8908869",
+    "updated_at": "2016-03-08T20:19:41",
+    "vlan_transparent": false,
+    "description": "",
+    "is_default": true,
+    "object_type":"network",
+    "region":"qa-de-1",
+    "domain_id":"2bac466eed364d8a92e477459e908736",
+    "domain_name":"monsoon3",
+    "project_id":"e9141fb24eee4b3e9f25ae69cda31132",
+    "project_name":"cc-demo"
+  },
+  "f759e098-5431-4664-b328-8b0702bc136d": {
+    "OS-DCF:diskConfig": "AUTO",
+    "OS-EXT-AZ:availability_zone": "nova",
+    "OS-EXT-SRV-ATTR:host": "compute",
+    "OS-EXT-SRV-ATTR:hostname": "new-server-test",
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": "fake-mini",
+    "OS-EXT-SRV-ATTR:instance_name": "instance-00000001",
+    "OS-EXT-SRV-ATTR:kernel_id": "",
+    "OS-EXT-SRV-ATTR:launch_index": 0,
+    "OS-EXT-SRV-ATTR:ramdisk_id": "",
+    "OS-EXT-SRV-ATTR:reservation_id": "r-ov3q80zj",
+    "OS-EXT-SRV-ATTR:root_device_name": "/dev/sda",
+    "OS-EXT-SRV-ATTR:user_data": "IyEvYmluL2Jhc2gKL2Jpbi9zdQplY2hvICJJIGFtIGluIHlvdSEiCg==",
+    "OS-EXT-STS:power_state": 1,
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:vm_state": "active",
+    "OS-SRV-USG:launched_at": "2017-02-14T19:23:59.895661",
+    "OS-SRV-USG:terminated_at": null,
+    "accessIPv4": "1.2.3.4",
+    "accessIPv6": "80fe::",
+    "addresses": {
+        "private": [
+            {
+                "OS-EXT-IPS-MAC:mac_addr": "aa:bb:cc:dd:ee:ff",
+                "OS-EXT-IPS:type": "fixed",
+                "addr": "192.168.0.3",
+                "version": 4
+            }
+        ]
+    },
+    "config_drive": "",
+    "created": "2017-02-14T19:23:58Z",
+    "description": null,
+    "flavor": {
+        "disk": 1,
+        "ephemeral": 0,
+        "extra_specs": {
+            "hw:cpu_policy": "dedicated",
+            "hw:mem_page_size": "2048"
+        },
+        "original_name": "m1.tiny.specs",
+        "ram": 512,
+        "swap": 0,
+        "vcpus": 1
+    },
+    "hostId": "2091634baaccdc4c5a1d57069c833e402921df696b7f970791b12ec6",
+    "host_status": "UP",
+    "id": "f759e098-5431-4664-b328-8b0702bc136d",
+    "image": {
+        "id": "479057c2-9466-4d21-aa7a-c6dcfdde7273",
+        "links": [
+            {
+                "href": "http://openstack.example.com/6f70656e737461636b20342065766572/images/70a599e0-31e7-49b7-b260-868f441e862b",
+                "rel": "bookmark"
+            }
+        ]
+    },
+    "key_name": null,
+    "links": [
+        {
+            "href": "http://openstack.example.com/v2.1/6f70656e737461636b20342065766572/servers/9168b536-cd40-4630-b43f-b259807c6e87",
+            "rel": "self"
+        },
+        {
+            "href": "http://openstack.example.com/6f70656e737461636b20342065766572/servers/9168b536-cd40-4630-b43f-b259807c6e87",
+            "rel": "bookmark"
+        }
+    ],
+    "locked": false,
+    "metadata": {
+        "My Server Name": "Apache1"
+    },
+    "name": "a1",
+    "os-extended-volumes:volumes_attached": [],
+    "progress": 0,
+    "security_groups": [
+        {
+            "name": "default"
+        }
+    ],
+    "status": "ACTIVE",
+    "tags": [],
+    "tenant_id": "e9141fb24eee4b3e9f25ae69cda31132",
+    "trusted_image_certificates": [
+        "0b5d2c72-12cc-4ba6-a8d7-3ff5cc1d8cb8",
+        "674736e3-f25c-405c-8362-bbf991e0ce0a"
+    ],
+    "updated": "2017-02-14T19:24:00Z",
+    "user_id": "fake",
+    "object_type":"server",
+    "region":"qa-de-1",
+    "domain_id":"2bac466eed364d8a92e477459e908736",
+    "domain_name":"monsoon3",
+    "project_id":"e9141fb24eee4b3e9f25ae69cda31132",
+    "project_name":"cc-demo"
+  },
+  "479057c2-9466-4d21-aa7a-c6dcfdde7273": {
+    "status": "active",
+    "name": "cirros-0.3.2-x86_64-disk",
+    "tags": [],
+    "container_format": "bare",
+    "created_at": "2014-05-05T17:15:10Z",
+    "disk_format": "qcow2",
+    "updated_at": "2014-05-05T17:15:11Z",
+    "visibility": "public",
+    "self": "/v2/images/1bea47ed-f6a9-463b-b423-14b9cca9ad27",
+    "min_disk": 0,
+    "protected": false,
+    "id": "479057c2-9466-4d21-aa7a-c6dcfdde7273",
+    "file": "/v2/images/1bea47ed-f6a9-463b-b423-14b9cca9ad27/file",
+    "checksum": "64d7c1cd2b6f60c92c14662941cb7913",
+    "os_hash_algo": "sha512",
+    "os_hash_value": "073b4523583784fbe01daff81eba092a262ec37ba6d04dd3f52e4cd5c93eb8258af44881345ecda0e49f3d8cc6d2df6b050ff3e72681d723234aff9d17d0cf09",
+    "os_hidden": false,
+    "owner": "5ef70662f8b34079a6eddb8da9d75fe8",
+    "size": 13167616,
+    "min_ram": 0,
+    "schema": "/v2/schemas/image",
+    "virtual_size": null,
+    "object_type":"image",
+    "region":"qa-de-1"
+  },
+  "e9141fb24eee4b3e9f25ae69cda31132-a991036aebea8d7738bb908202196652ed22841f58cd4de18db1acaeb26c4208-71c75e94010f4f2f8c2047e1e9514da3": {
+    "id": "e9141fb24eee4b3e9f25ae69cda31132-a991036aebea8d7738bb908202196652ed22841f58cd4de18db1acaeb26c4208-71c75e94010f4f2f8c2047e1e9514da3",
+    "links": {
+        "assignment": "http://example.com/identity/v3/domains/161718/users/313233/roles/123456"
+    },
+    "role": {
+        "id": "123456"
+    },
+    "scope": {
+        "domain": {
+            "id": "161718"
+        }
+    },
+    "user": {
+        "id": "313233"
+    },
+    "object_type":"role_assignment",
+    "region":"qa-de-1",
+    "domain_id":"2bac466eed364d8a92e477459e908736",
+    "domain_name":"monsoon3",
+    "project_id":"e9141fb24eee4b3e9f25ae69cda31132",
+    "project_name":"cc-demo"
+  },
+
+  "669277bf-49ba-4de0-99e9-4a8cae58796c": {
+    "admin_state_up": true,
+    "allowed_address_pairs": [],
+    "created_at": "2016-03-08T20:19:41",
+    "data_plane_status": "ACTIVE",
+    "description": "",
+    "device_id": "5e3898d7-11be-483e-9732-b2f5eccd2b2e",
+    "device_owner": "network:router_interface",
+    "dns_assignment": {
+        "hostname": "myport",
+        "ip_address": "10.0.0.1",
+        "fqdn": "myport.my-domain.org"
+    },
+    "dns_domain": "my-domain.org.",
+    "dns_name": "myport",
+    "extra_dhcp_opts": [
+        {
+            "opt_value": "pxelinux.0",
+            "ip_version": 4,
+            "opt_name": "bootfile-name"
+        }
+    ],
+    "fixed_ips": [
+        {
+            "ip_address": "10.0.0.1",
+            "subnet_id": "a0304c3a-4f08-4c43-88af-d796509c97d2"
+        }
+    ],
+    "id": "669277bf-49ba-4de0-99e9-4a8cae58796c",
+    "ip_allocation": "immediate",
+    "mac_address": "fa:16:3e:23:fd:d7",
+    "name": "loadbalancer-1",
+    "network_id": "a87cc70a-3e15-4acf-8205-9b711a3531b7",
+    "port_security_enabled": false,
+    "project_id": "7e02058126cc4950b75f9970368ba177",
+    "revision_number": 1,
+    "security_groups": [],
+    "status": "ACTIVE",
+    "tags": ["tag1,tag2"],
+    "tenant_id": "7e02058126cc4950b75f9970368ba177",
+    "updated_at": "2016-03-08T20:19:41",
+    "qos_policy_id": "29d5e02e-d5ab-4929-bee4-4a9fc12e22ae",
+    "region":"qa-de-1",
+    "domain_id":"2bac466eed364d8a92e477459e908736",
+    "domain_name":"monsoon3",
+    "project_id":"e9141fb24eee4b3e9f25ae69cda31132",
+    "project_name":"cc-demo"
+  },
+  "47cbf9ab-7326-4a20-8323-704d2b2ea565": {
+    "admin_state_up": true,
+    "allowed_address_pairs": [],
+    "created_at": "2016-03-08T20:19:41",
+    "data_plane_status": "ACTIVE",
+    "description": "",
+    "device_id": "5e3898d7-11be-483e-9732-b2f5eccd2b2e",
+    "device_owner": "network:router_interface",
+    "dns_assignment": {
+        "hostname": "myport",
+        "ip_address": "10.0.0.1",
+        "fqdn": "myport.my-domain.org"
+    },
+    "dns_domain": "my-domain.org.",
+    "dns_name": "myport",
+    "extra_dhcp_opts": [
+        {
+            "opt_value": "pxelinux.0",
+            "ip_version": 4,
+            "opt_name": "bootfile-name"
+        }
+    ],
+    "fixed_ips": [
+        {
+            "ip_address": "10.0.0.1",
+            "subnet_id": "a0304c3a-4f08-4c43-88af-d796509c97d2"
+        }
+    ],
+    "id": "47cbf9ab-7326-4a20-8323-704d2b2ea565",
+    "ip_allocation": "immediate",
+    "mac_address": "fa:16:3e:23:fd:d7",
+    "name": "loadbalancer-c9b6fd5f-0f16-431e-856c-4395aa9ad71e",
+    "network_id": "a87cc70a-3e15-4acf-8205-9b711a3531b7",
+    "port_security_enabled": false,
+    "project_id": "7e02058126cc4950b75f9970368ba177",
+    "revision_number": 1,
+    "security_groups": [],
+    "status": "ACTIVE",
+    "tags": ["tag1,tag2"],
+    "tenant_id": "7e02058126cc4950b75f9970368ba177",
+    "updated_at": "2016-03-08T20:19:41",
+    "qos_policy_id": "29d5e02e-d5ab-4929-bee4-4a9fc12e22ae",
+    "region":"qa-de-1",
+    "domain_id":"2bac466eed364d8a92e477459e908736",
+    "domain_name":"monsoon3",
+    "project_id":"e9141fb24eee4b3e9f25ae69cda31132",
+    "project_name":"cc-demo"
+  },
+  "430991b3-da0d-41cb-ac54-d1d532841725": {
+    "admin_state_up": true,
+    "availability_zone_hints": [],
+    "availability_zones": [
+        "nova"
+    ],
+    "created_at": "2016-03-08T20:19:41",
+    "dns_domain": "my-domain.org.",
+    "id": "430991b3-da0d-41cb-ac54-d1d532841725",
+    "ipv4_address_scope": null,
+    "ipv6_address_scope": null,
+    "l2_adjacency": false,
+    "mtu": 1500,
+    "name": "private-network",
+    "port_security_enabled": true,
+    "project_id": "4fd44f30292945e481c7b8a0c8908869",
+    "qos_policy_id": "6a8454ade84346f59e8d40665f878b2e",
+    "revision_number": 1,
+    "router:external": false,
+    "shared": true,
+    "status": "ACTIVE",
+    "subnets": [
+        "54d6f61d-db07-451c-9ab3-b9609b6b6f0b"
+    ],
+    "tags": ["tag1,tag2"],
+    "tenant_id": "4fd44f30292945e481c7b8a0c8908869",
+    "updated_at": "2016-03-08T20:19:41",
+    "vlan_transparent": false,
+    "description": "",
+    "is_default": true,
+    "domain_id":"2bac466eed364d8a92e477459e908736",
+    "domain_name":"monsoon3",
+    "project_id":"e9141fb24eee4b3e9f25ae69cda31132",
+    "project_name":"FloatingIP-external-monsoon3-01"
   }
 }

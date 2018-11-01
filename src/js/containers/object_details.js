@@ -18,7 +18,6 @@ export default connect(
       let obj = state.objects.find(i => i.id==id)
       if(obj) objectHistory.push(obj)
     }
-    console.log('item',item)
 
     return { id, item, dependencies, objectHistory }
   },

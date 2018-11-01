@@ -10,6 +10,9 @@ export const RECEIVE_USER_PROFILE         = 'auth/RECEIVE_USER_PROFILE'
 export const REQUEST_OBJECT               = 'objects/REQUEST_OBJECT'
 export const REQUEST_OBJECT_FAILURE       = 'objects/REQUEST_OBJECT_FAILURE'
 export const RECEIVE_OBJECT               = 'objects/RECEIVE_OBJECT'
+export const RECEIVE_OBJECTS              = 'objects/RECEIVE_OBJECTS'
+export const RESET_OBJECTS                = 'objects/RESET_OBJECTS'
+
 //########### OBJECT DEPENDENCIES #######
 export const REQUEST_DEPENDENCIES         = 'objects/REQUEST_DEPENDENCIES'
 export const REQUEST_DEPENDENCIES_FAILURE = 'objects/REQUEST_DEPENDENCIES_FAILURE'

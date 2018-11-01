@@ -39,7 +39,7 @@ const extendHistory = (state,{id}) => {
   let index = state.history.indexOf(id)
   console.log('extendHistory index',index)
   if(state.history.length>0 && index==state.history.length-1) return state
-  if(index>=0) return {...state, history: state.history.slice(0,index)}
+  if(index>=0) return {...state, history: state.history.slice(0,index+1)}
 
   let history = state.history.slice(0)
   history.push(id)

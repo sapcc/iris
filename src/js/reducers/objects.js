@@ -1,7 +1,9 @@
 import {
   REQUEST_OBJECT,
   REQUEST_OBJECT_FAILURE,
-  RECEIVE_OBJECT
+  RECEIVE_OBJECT,
+  RECEIVE_OBJECTS,
+  RESET_OBJECTS
 } from '../constants'
 
 const initialState = []
@@ -12,6 +14,15 @@ const initialObjectState = {
   requestedAt: null,
   receivedAt: null
 }
+
+const receiveObjects = (state,{items}) => {
+  let newState = state.concat(items)
+  return newState.filter((elem, pos, arr) => {
+    return arr.indexOf(elem) == pos;
+  })
+}
+
+const resetObjects = (state) => []
 
 const requestObject = (state,{requestedAt,id}) => {
   let newState = state.slice()
@@ -54,6 +65,8 @@ export default (state = initialState, action) => {
     case REQUEST_OBJECT: return requestObject(state,action)
     case REQUEST_OBJECT_FAILURE: return requestObjectFailure(state,action)
     case RECEIVE_OBJECT: return receiveObject(state,action)
+    case RECEIVE_OBJECTS: return receiveObjects(state,action)
+    case RESET_OBJECTS: return resetObjects(state,action)
     default: return state
   }
 }
