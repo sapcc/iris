@@ -504,8 +504,9 @@
     "kubernetes.labels.name":"neutron-f5agent-f512-02",
     "log":"2018-10-24 11:41:07,145.145 7 ERROR f5_openstack_agent.lbaasv2.drivers.bigip.agent_manager   File \"/var/lib/openstack/local/lib/python2.7/site-packages/oslo_messaging/transport.py\", line 91, in _send\n"
   },
-  "alarm1":{
+  "alert1":{
     "alertname":"F5DeviceNetworkConnectivityIssue",
+    "id":"alert1",
     "alertstate":"firing",
     "severity": "critical",
     "tier": "F5 Networks",
@@ -514,7 +515,8 @@
     "dashboard": "ccloud-health-blackbox-details",
     "meta": "Network Connectivity is down for 1 min. See Sentry for details.",
     "sentry": "blackbox/?query=test_lbaas_device_connectivity",
-    "playbook": "docs/devops/alert/lbaas/f5/device/#connectivity"
+    "playbook": "docs/devops/alert/lbaas/f5/device/#connectivity",
+    "object_type":"alarm"
   },
 
   "a7ec6c35-4e17-4e97-aa2b-0d93e56bb6c7": {
@@ -1078,6 +1080,7 @@
     "tenant_id": "7e02058126cc4950b75f9970368ba177",
     "updated_at": "2016-03-08T20:19:41",
     "qos_policy_id": "29d5e02e-d5ab-4929-bee4-4a9fc12e22ae",
+    "object_type":"port",
     "region":"qa-de-1",
     "domain_id":"2bac466eed364d8a92e477459e908736",
     "domain_name":"monsoon3",
