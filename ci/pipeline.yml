@@ -89,6 +89,25 @@ jobs:
           REGION: qa-de-1
           GITHUB_TOKEN: {{github-access-token}}
 
+  - name: qa-de-1_e2e
+    serial: true
+    plan:
+      - aggregate:
+        - get: iris.git
+        - get: version
+          trigger: true
+          passed: [qa-de-1]
+        - get: charts.git
+        - get: secrets.git
+      - aggregate:
+        - task: qa e2e
+          file: iris.git/ci/tasks/integration.yaml
+          params:
+            CAPYBARA_APP_HOST: {{qa-capybara-app-host}}
+            CCTEST_PROJECT: cloud_admin
+            CCTEST_DOMAIN: ccadmin
+            CCTEST_USER: dashboard
+            CCTEST_PASSWORD:  {{qa-dashboard-password}}
 
 resources:
   - name: iris.git
