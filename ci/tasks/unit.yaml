@@ -14,5 +14,5 @@ run:
   args:
     - -c
     - |
-      make -C $PWD/home/app/webapp/iris font-awesom-file auth-token={{font-awesom-auth-token}}
+      make -C $PWD/home/app/webapp/iris font-awesom-file auth-token=$FONT-AWESOM-AUTH-TOKEN
       make -C $PWD/home/app/webapp/iris unit-test

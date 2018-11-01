@@ -26,6 +26,8 @@ jobs:
       - aggregate:
         - task: unit
           file: iris.git/ci/tasks/unit.yaml
+          params:
+            FONT-AWESOM-AUTH-TOKEN: {{font-awesom-auth-token}}
     # on_failure:
     #   <<: *post_failure_to_slack
 
