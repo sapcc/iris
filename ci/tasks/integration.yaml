@@ -14,4 +14,4 @@ run:
   args:
     - -c
     - |
-      make -C $PWD/home/app/webapp/iris unit-test
+      make -C $PWD/home/app/webapp/iris integration-test

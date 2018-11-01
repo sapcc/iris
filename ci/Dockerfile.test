@@ -1,0 +1,9 @@
+FROM node:8.12-alpine AS iris
+
+RUN apk --no-cache add git ca-certificates bash make
+
+RUN yarn global add puppeteer
+
+WORKDIR  /usr/local/share/.config/yarn/global/node_modules/puppeteer
+
+RUN yarn link

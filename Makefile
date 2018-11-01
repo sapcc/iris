@@ -1,11 +1,11 @@
 IMAGE := sapcc/iris
-UNIT-IMAGE := hub.global.cloud.sap/monsoon/nodebuild
+TEST-IMAGE := hub.global.cloud.sap/monsoon/nodebuild
 DATE     := $(shell date +%Y%m%d%H%M%S)
 VERSION  ?= v$(DATE)
 UNIT-VERSION := 8.12
 BUILD_ARGS = --build-arg VERSION=$(VERSION)
 
-.PHONY: build, start, unit-test, build-unit, push-unit
+.PHONY: build, start, unit-test, integration-test, build-test, push-test
 
 build:
 	docker build $(BUILD_ARGS) -t $(IMAGE):$(VERSION) -t $(IMAGE):latest .
@@ -13,11 +13,14 @@ build:
 start:
 	docker run -p 80:80 -t -i $(IMAGE):latest
 
-unit:
+unit-test:
 	yarn --dev && yarn test
 
-build-unit:
-	docker build -t $(UNIT-IMAGE):$(UNIT-VERSION) -f ./ci/Dockerfile.unit .
+integration-test:
+	yarn link puppeteer && yarn integration
 
-push-unit:
-	docker push $(UNIT-IMAGE):$(UNIT-VERSION)
+build-test:
+	docker build -t $(TEST-IMAGE):$(UNIT-VERSION) -f ./ci/Dockerfile.test .
+
+push-test:
+	docker push $(TEST-IMAGE):$(UNIT-VERSION)
