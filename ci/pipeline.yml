@@ -111,6 +111,7 @@ jobs:
             CCTEST_DOMAIN: ccadmin
             CCTEST_USER: dashboard
             CCTEST_PASSWORD:  {{qa-dashboard-password}}
+            AUTH_TOKEN: ((font-awesom-auth-token))
 
 resources:
   - name: iris.git

@@ -14,4 +14,7 @@ run:
   args:
     - -c
     - |
+      make -C $PWD/home/app/webapp/iris font-awesome-file auth-token=$AUTH_TOKEN
       make -C $PWD/home/app/webapp/iris integration-test
+params:
+  AUTH_TOKEN:
