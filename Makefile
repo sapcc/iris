@@ -17,7 +17,7 @@ unit-test:
 	yarn --dev && yarn test
 
 integration-test:
-	yarn link puppeteer && yarn integration
+	yarn --dev && yarn link puppeteer && yarn integration
 
 build-test:
 	docker build -t $(TEST-IMAGE):$(UNIT-VERSION) -f ./ci/Dockerfile.test .
