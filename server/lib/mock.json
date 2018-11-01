@@ -109,6 +109,7 @@
     "dns_name":"",
     "tenant_id":"d6212fdc832747099b8e12ccf4fd5bd8",
     "object_type":"floatingip",
+    "name":"10.236.36.157",
     "domain_id":"2bac466eed364d8a92e477459e908736",
     "domain_name":"monsoon3",
     "project_id":"e9141fb24eee4b3e9f25ae69cda31132",

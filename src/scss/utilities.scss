@@ -6,6 +6,10 @@
   color: $gray-500;
 }
 
+.u-text-info-dark {
+  color: $gray-600;
+}
+
 .u-text-small {
   font-size: $font-size-sm;
 }
@@ -27,4 +31,16 @@
   &.fa-ul {
     margin-left: 1.5em;
   }
+}
+
+.font-weight-lightest {
+  font-weight: 100 !important;
+}
+
+// ---------------------------------------------------------------------------------
+// Icons
+// ---------------------------------------------------------------------------------
+
+.fa-xxs {
+  font-size: .6em;
 }

@@ -18,7 +18,7 @@ export default ({item,dependencies}) =>
           </dd>
 
           <dt className="col-md-3">ID</dt>
-          <dd className="col-md-9">{item.id}</dd>
+          <dd className="col-md-9"><span className="u-text-info-dark font-weight-lightest">{item.id}</span></dd>
 
           <dt className="col-md-3">Type</dt>
           <dd className="col-md-9">{item.object_type}</dd>
@@ -30,7 +30,7 @@ export default ({item,dependencies}) =>
             ?
             <React.Fragment>
               <dt className="col-md-3">Domain</dt>
-              <dd className="col-md-9">{item.domain_name} <span className="u-text-info u-text-small">({item.domain_id})</span></dd>
+              <dd className="col-md-9">{item.domain_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.domain_id}</span></dd>
             </React.Fragment>
             :
             null
@@ -40,7 +40,7 @@ export default ({item,dependencies}) =>
             ?
             <React.Fragment>
               <dt className="col-md-3">Project</dt>
-              <dd className="col-md-9">{item.project_name} <span className="u-text-info u-text-small">({item.project_id})</span></dd>
+              <dd className="col-md-9">{item.project_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.project_id}</span></dd>
             </React.Fragment>
             :
             null
@@ -65,10 +65,13 @@ export default ({item,dependencies}) =>
               <li key={index}>
                 <span className="fa-li" ><i className="fas fa-caret-down"></i></span>
                 <span>{type} ({dependencies.items[type].length})</span>
-                <ul className="content-list">
+                <ul className="fa-ul u-list-align-left">
                   {dependencies.items[type].map((subitem) =>
                     <li key={subitem.id}>
-                      <Link to={`/objects/${subitem.id}`}>{subitem.name}</Link>
+                      <Link to={`/objects/${subitem.id}`}>
+                        <span className="fa-li" ><i className="fal fa-square fa-xxs"></i></span>
+                        {subitem.name}
+                      </Link>
                     </li>
                   )}
                 </ul>
