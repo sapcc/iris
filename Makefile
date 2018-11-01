@@ -5,7 +5,7 @@ VERSION  ?= v$(DATE)
 UNIT-VERSION := 8.12
 BUILD_ARGS = --build-arg VERSION=$(VERSION)
 
-.PHONY: build, start, unit-test, integration-test, font-awesom-file, build-test, push-test
+.PHONY: build, start, unit-test, integration-test, font-awesome-file, build-test, push-test
 
 build:
 	docker build $(BUILD_ARGS) -t $(IMAGE):$(VERSION) -t $(IMAGE):latest .
@@ -19,7 +19,7 @@ unit-test:
 integration-test:
 	yarn --dev && yarn link puppeteer && yarn integration
 
-font-awesom-file:
+font-awesome-file:
 	@touch ./.npmrc && echo "@fortawesome:registry=https://npm.fontawesome.com/" > ./.npmrc && echo //npm.fontawesome.com/:_authToken=$(auth-token) >> ./.npmrc
 
 build-test:
