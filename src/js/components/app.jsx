@@ -14,7 +14,7 @@ import SearchResults from '../containers/search_results'
 import ObjectDetails from '../containers/object_details'
 
 
-const App = ({profile,login,logout,findObjects,search}) => {
+const App = ({profile,login,logout,findObjects,updateSearchFilter,search}) => {
 
   return (
     <HashRouter /*hashType="noslash"*/ >
@@ -24,6 +24,7 @@ const App = ({profile,login,logout,findObjects,search}) => {
 
         <SearchBar
           findObjects={findObjects}
+          updateSearchFilter={updateSearchFilter}
           searchFilter={search.filter}
           isFetching={search.isFetching}/>
 

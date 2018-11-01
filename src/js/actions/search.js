@@ -3,18 +3,18 @@ import {
   REQUEST_SEARCH,
   REQUEST_SEARCH_FAILURE,
   RECEIVE_SEARCH_RESULTS,
-  EXTEND_SEARCH_HISTORY
+  EXTEND_SEARCH_HISTORY,
+  UPDATE_SEARCH_FILTER
 } from '../constants'
 
 const errorMessage = (error) =>
   error.response && error.response.data || error.message
 
 //################ Search #################
-const requestSearch = (filter) => (
+const requestSearch = () => (
   {
     type: REQUEST_SEARCH,
-    requestedAt: Date.now(),
-    filter
+    requestedAt: Date.now()
   }
 )
 
@@ -40,22 +40,26 @@ const extendHistory = (id) => (
   }
 )
 
-let timer;
+const updateSearchFilter = (filter) => (
+  {
+    type: UPDATE_SEARCH_FILTER,
+    filter
+  }
+)
 
-const findObjects = (filter) =>
-  (dispatch) => {
-    dispatch(requestSearch(filter))
+const findObjects = () =>
+  (dispatch,getState) => {
+    dispatch(requestSearch())
+    let filter = getState()['search']['filter']
 
-    if(timer) clearTimeout(timer)
-    timer = setTimeout(() => {
-      axios.get(`/api/lookup/search`, {params: filter})
+    axios.get(`/api/lookup/search`, {params: filter})
       .then(response => dispatch(receiveSearchResults(response.data)))
       .catch(error => dispatch(requestSearchFailure(errorMessage(error))))
-    }, 100)
   }
 ;
 
 export {
   findObjects,
+  updateSearchFilter,
   extendHistory
 }

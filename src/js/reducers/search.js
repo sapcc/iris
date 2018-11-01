@@ -2,7 +2,8 @@ import {
   REQUEST_SEARCH,
   REQUEST_SEARCH_FAILURE,
   RECEIVE_SEARCH_RESULTS,
-  EXTEND_SEARCH_HISTORY
+  EXTEND_SEARCH_HISTORY,
+  UPDATE_SEARCH_FILTER
 } from '../constants'
 
 
@@ -16,10 +17,14 @@ const initialState = {
   history: []
 }
 
-const requestSearch = (state,{requestedAt,filter}) => {
-  let newState = {...state, isFetching: true, error: null, requestedAt, items: [], history: []}
+const updateSearchFilter = (state,{filter}) => {
+  let newState = {...state}
   newState.filter = {...filter}
   return newState
+}
+
+const requestSearch = (state,{requestedAt}) => {
+  return {...state, isFetching: true, error: null, requestedAt, items: [], history: []}
 }
 
 const requestSearchFailure = (state,{error}) => {
@@ -47,6 +52,7 @@ export default (state = initialState, action) => {
     case REQUEST_SEARCH_FAILURE: return requestSearchFailure(state,action)
     case RECEIVE_SEARCH_RESULTS: return receiveSearchResults(state,action)
     case EXTEND_SEARCH_HISTORY: return extendHistory(state,action)
+    case UPDATE_SEARCH_FILTER: return updateSearchFilter(state,action)
     default: return state
   }
 }

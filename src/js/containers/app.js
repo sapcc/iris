@@ -1,7 +1,7 @@
 import { connect } from  'react-redux';
 import App from '../components/app';
 import { login, logout } from '../actions/auth'
-import { findObjects } from '../actions/search'
+import { findObjects, updateSearchFilter } from '../actions/search'
 
 export default connect(
   (state ) => (
@@ -14,9 +14,8 @@ export default connect(
     {
       login: (authParams) => dispatch(login(authParams)),
       logout: () => dispatch(logout()),
-      findObjects: (filter) => {
-        dispatch(findObjects(filter))
-      }
+      updateSearchFilter: (filter) => {dispatch(updateSearchFilter(filter))},
+      findObjects: () => dispatch(findObjects())
     }
   )
 )(App);
