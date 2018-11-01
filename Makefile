@@ -20,7 +20,7 @@ integration-test:
 	yarn --dev && yarn link puppeteer && yarn integration
 
 font-awesome-file:
-	@touch ./.npmrc && echo "@fortawesome:registry=https://npm.fontawesome.com/" > ./.npmrc && echo //npm.fontawesome.com/:_authToken=$(auth-token) >> ./.npmrc
+	@[ -f ./.npmrc ] || (touch ./.npmrc && echo "@fortawesome:registry=https://npm.fontawesome.com/" > ./.npmrc && echo //npm.fontawesome.com/:_authToken=$(auth-token) >> ./.npmrc)
 
 build-test:
 	docker build -t $(TEST-IMAGE):$(UNIT-VERSION) -f ./ci/Dockerfile.test .
