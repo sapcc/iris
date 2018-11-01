@@ -50,6 +50,7 @@ jobs:
               http_proxy: {{http-proxy}}
               https_proxy: {{https-proxy}}
               no_proxy: {{no-proxy}}
+              font_awesom_auth_token: {{font-awesom-auth-token}}
             tag: version/version
           get_params:
             skip_download: true
