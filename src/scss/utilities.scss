@@ -22,3 +22,9 @@
   width: 1px;
   white-space: nowrap;
 }
+
+.u-list-align-left {
+  &.fa-ul {
+    margin-left: 1.5em;
+  }
+}

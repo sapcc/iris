@@ -350,7 +350,7 @@
       },
       "global_routed_mode": false
     },
-    "object_type":"lbaa-agent",
+    "object_type":"lbaas-agent",
     "region":"qa-de-1"
   },
   "qa-de-1b-f512-01-cp090.cc.qa-de-1.cloud.sap":{

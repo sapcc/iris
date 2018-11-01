@@ -4,7 +4,12 @@
     "project":[{"id":"e9141fb24eee4b3e9f25ae69cda31132", "name":"cc-demo"}]
   },
   "e9141fb24eee4b3e9f25ae69cda31132":{
-    "server":[{"id":"f759e098-5431-4664-b328-8b0702bc136d", "name":"a1"}],
+    "server":[
+      {"id":"f759e098-5431-4664-b328-8b0702bc136d", "name":"a1"},
+      {"id":"f759e098-5431-4665-b328-8b0702bc136d", "name":"a2"},
+      {"id":"f759e098-5431-4666-b328-8b0702bc136d", "name":"testing"},
+      {"id":"f759e098-5431-4667-b328-8b0702bc136d", "name":"hase"}
+    ],
     "project_group_role_assignment":[{"id":"e9141fb24eee4b3e9f25ae69cda31132-a991036aebea8d7738bb908202196652ed22841f58cd4de18db1acaeb26c4208-71c75e94010f4f2f8c2047e1e9514da3", "name":"admin"}],
     "image":[{"id":"479057c2-9466-4d21-aa7a-c6dcfdde7273", "name":"glance-test"}],
     "network":[{"id":"a7ec6c35-4e17-4e97-aa2b-0d93e56bb6c7", "name":"cc-demo_private"}],

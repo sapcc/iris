@@ -13,3 +13,14 @@
     font-style:   normal;
     font-weight:  400;
 }
+
+
+ul.content-list {
+  padding-left: 0;
+  list-style-type: none;
+
+  li {
+    background: url("../images/rounded-square-outline.svg") 0 7px no-repeat;
+    padding-left: 19px;
+  }
+}
