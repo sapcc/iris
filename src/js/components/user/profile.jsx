@@ -34,7 +34,7 @@ export default class Profile extends React.Component {
         <ModalHeader toggle={this.handleHide}>Profile</ModalHeader>
         <ModalBody>
           {profile.isFetching ?
-            <React.Fragment><span className='fas fa-spinner fa-pulse'></span> Loading...</React.Fragment>
+            <React.Fragment><i className='fas fa-spinner fa-pulse'></i> Loading...</React.Fragment>
           : profile.user &&
             <div className='row'>
               <div className='col-sm-2'>

@@ -11,7 +11,7 @@ export default ({profile}) =>
       </a>
 
       {profile.isFetching ?
-        <span className='fas fa-spinner fa-pulse'></span>
+        <i className='fas fa-spinner fa-pulse'></i>
         :
         profile.user
           ?

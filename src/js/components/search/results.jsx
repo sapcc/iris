@@ -3,7 +3,7 @@ import Item from './item'
 
 export default ({search, showObjectDetails}) =>
   search.isFetching ?
-    <div className="container-fluid"><span className='fas fa-spinner fa-pulse'></span> Loading...</div>
+    <div className="container-fluid"><i className='fas fa-spinner fa-pulse'></i> Loading...</div>
     : search.receivedAt &&
     <div className="search-results container-fluid">
       <h6 className="u-text-info">Found {search.items.length} results</h6>

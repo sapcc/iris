@@ -56,7 +56,7 @@ export default ({item,dependencies}) =>
         {!dependencies || dependencies.isFetching
           ?
           <React.Fragment>
-            <span className='fas fa-spinner fa-pulse'></span> Loading...
+            <i className='fas fa-spinner fa-pulse'></i> Loading...
           </React.Fragment>
           : Object.keys(dependencies.items).length === 0
             ?
