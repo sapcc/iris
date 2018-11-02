@@ -17,12 +17,12 @@ describe('MainNav', () => {
     expect(enzymeWrapper.find('nav').hasClass('navbar')).toBe(true)
     expect(enzymeWrapper.find('div.logo').exists()).toBe(true)
     expect(enzymeWrapper.find('a.navbar-brand').text()).toBe('Iris')
-    expect(enzymeWrapper.find('span.spinner').exists()).toBe(false)
+    expect(enzymeWrapper.find('span.fa-spinner').exists()).toBe(false)
   })
 
   it('should render a spinner', () => {
     const enzymeWrapper = setup({profile: {isFetching: true}})
-    expect(enzymeWrapper.find('span.spinner').exists()).toBe(true)
+    expect(enzymeWrapper.find('span.fa-spinner').exists()).toBe(true)
   })
 
   it('should render login link', () => {
@@ -32,6 +32,6 @@ describe('MainNav', () => {
 
   it('should render profile link', () => {
     const enzymeWrapper = setup({profile: {user: {name: 'Test'}}})
-    expect(enzymeWrapper.findWhere(n => n.text() == 'Profile').exists()).toBe(true)
+    expect(enzymeWrapper.find('a.profile-link').exists()).toBe(true)
   })
 })

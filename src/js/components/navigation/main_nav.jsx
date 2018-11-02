@@ -15,7 +15,7 @@ export default ({profile}) =>
         :
         profile.user
           ?
-          <Link to='/profile'><img className="avatar" src={`https://avatars.wdf.sap.corp/avatar/${profile.user.name}?size=25x25`}/></Link>
+          <Link className="profile-link" to='/profile'><img className="avatar" src={`https://avatars.wdf.sap.corp/avatar/${profile.user.name}?size=25x25`}/></Link>
           :
           <Link to='/login'>Login</Link>
       }
