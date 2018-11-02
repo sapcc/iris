@@ -106,7 +106,7 @@ jobs:
         - task: qa e2e
           file: iris.git/ci/tasks/integration.yaml
           params:
-            CAPYBARA_APP_HOST: {{qa-capybara-app-host}}
+            PUPPETEER_APP_HOST: {{qa-capybara-app-host}}
             CCTEST_PROJECT: cloud_admin
             CCTEST_DOMAIN: ccadmin
             CCTEST_USER: dashboard
