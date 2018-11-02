@@ -37,10 +37,21 @@
   font-weight: 100 !important;
 }
 
+.u-text-word-break {
+  word-break: break-all;
+  word-break: break-word;
+}
+
 // ---------------------------------------------------------------------------------
 // Icons
 // ---------------------------------------------------------------------------------
 
 .fa-xxs {
   font-size: .6em;
+}
+
+.spinner {
+  // @extend .fas;
+  // @extend .fa-spinner;
+  // @extend .fa-pulse;
 }

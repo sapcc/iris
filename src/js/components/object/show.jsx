@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 export default ({item,dependencies}) =>
   <div className="container-fluid">
     <div className="row">
-      <div className="col-md-3">
+      <div className="col-md-4">
         <dl className="row">
-          <dt className="col-md-2">Name</dt>
-          <dd className="col-md-10">
+          <dt className="col-lg-2">Name</dt>
+          <dd className="col-lg-10">
             { item.name
               ?
               <strong>{item.name}</strong>
@@ -17,33 +17,28 @@ export default ({item,dependencies}) =>
             }
           </dd>
 
-          <dt className="col-md-2">ID</dt>
-          <dd className="col-md-10"><span className="u-text-info-dark font-weight-lightest">{item.id}</span></dd>
+          <dt className="col-lg-2">ID</dt>
+          <dd className="col-lg-10"><span className="u-text-info-dark font-weight-lightest">{item.id}</span></dd>
 
-          <dt className="col-md-2">Type</dt>
-          <dd className="col-md-10">{item.object_type}</dd>
+          <dt className="col-lg-2">Type</dt>
+          <dd className="col-lg-10">{item.object_type}</dd>
 
-          <dt className="col-md-2">Region</dt>
-          <dd className="col-md-10">{item.region}</dd>
+          <dt className="col-lg-2">Region</dt>
+          <dd className="col-lg-10">{item.region}</dd>
 
-          {item.domain_name
-            ?
+          {item.domain_name &&
             <React.Fragment>
-              <dt className="col-md-2">Domain</dt>
-              <dd className="col-md-10">{item.domain_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.domain_id}</span></dd>
+              <dt className="col-lg-2">Domain</dt>
+              <dd className="col-lg-10">{item.domain_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.domain_id}</span></dd>
             </React.Fragment>
-            :
-            null
+
           }
 
-          {item.project_name
-            ?
+          {item.project_name &&
             <React.Fragment>
-              <dt className="col-md-2">Project</dt>
-              <dd className="col-md-10">{item.project_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.project_id}</span></dd>
+              <dt className="col-lg-2">Project</dt>
+              <dd className="col-lg-10">{item.project_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.project_id}</span></dd>
             </React.Fragment>
-            :
-            null
           }
         </dl>
 
@@ -52,7 +47,7 @@ export default ({item,dependencies}) =>
         <h6>Details</h6>
         <ReactJson src={item} collapsed={1}/>
       </div>
-      <div className="col">
+      <div className="col-md-3">
         <h6>Dependencies</h6>
         {!dependencies || dependencies.isFetching
           ?

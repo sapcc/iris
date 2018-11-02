@@ -31,3 +31,7 @@ body {
   height: 30px;
   width: 62px;
 }
+
+dd {
+  @extend .u-text-word-break;
+}
