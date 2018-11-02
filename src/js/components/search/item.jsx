@@ -17,11 +17,11 @@ export default ({handleClick,item,searchTerm=''}) => {
       <td>{item.region}</td>
       <td>
         {item.domain_name}<br/>
-        <span className="u-text-info u-text-small">({item.domain_id})</span>
+        <span className="u-text-info-dark font-weight-lightest u-text-small">{item.domain_id}</span>
       </td>
       <td>
         {item.project_name}<br/>
-        <span className="u-text-info u-text-small">({item.project_id})</span>
+        <span className="u-text-info-dark font-weight-lightest u-text-small">{item.project_id}</span>
       </td>
     </tr>
   )

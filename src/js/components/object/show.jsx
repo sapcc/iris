@@ -18,7 +18,7 @@ export default ({item,dependencies}) =>
           </dd>
 
           <dt className="col-lg-2">ID</dt>
-          <dd className="col-lg-10"><span className="u-text-info-dark font-weight-lightest">{item.id}</span></dd>
+          <dd className="col-lg-10"><span className="u-text-info-dark font-weight-lightest u-text-small">{item.id}</span></dd>
 
           <dt className="col-lg-2">Type</dt>
           <dd className="col-lg-10">{item.object_type}</dd>
@@ -29,7 +29,7 @@ export default ({item,dependencies}) =>
           {item.domain_name &&
             <React.Fragment>
               <dt className="col-lg-2">Domain</dt>
-              <dd className="col-lg-10">{item.domain_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.domain_id}</span></dd>
+              <dd className="col-lg-10">{item.domain_name} <br /> <span className="u-text-info-dark font-weight-lightest u-text-small">{item.domain_id}</span></dd>
             </React.Fragment>
 
           }
@@ -37,7 +37,7 @@ export default ({item,dependencies}) =>
           {item.project_name &&
             <React.Fragment>
               <dt className="col-lg-2">Project</dt>
-              <dd className="col-lg-10">{item.project_name} <br /> <span className="u-text-info-dark font-weight-lightest">{item.project_id}</span></dd>
+              <dd className="col-lg-10">{item.project_name} <br /> <span className="u-text-info-dark font-weight-lightest u-text-small">{item.project_id}</span></dd>
             </React.Fragment>
           }
         </dl>
