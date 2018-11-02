@@ -17,7 +17,6 @@
   },
   "e2605d69-bde4-48a1-94a5-cc6b685ba684":{
     "port":[
-      {"id":"669277bf-49ba-4de0-99e9-4a8cae58796c", "name":"loadbalancer-1"},
       {"id":"47cbf9ab-7326-4a20-8323-704d2b2ea565", "name":"loadbalancer-c9b6fd5f-0f16-431e-856c-4395aa9ad71e"}
     ],
     "network":[{"id":"430991b3-da0d-41cb-ac54-d1d532841725", "name":"FloatingIP-external-monsoon3-01"}],
@@ -28,7 +27,7 @@
     "project":[{"id":"e9141fb24eee4b3e9f25ae69cda31132", "name":"cc-demo"}]
   },
   "eaa13da1-e37f-4711-939b-70c8d3c547fb":{
-    "lbaa-agent":[{"id":"ead212a0-de8a-4783-b8bc-dbfe915f009e", "name":"f512-01"}],
+    "lbaas-agent":[{"id":"ead212a0-de8a-4783-b8bc-dbfe915f009e", "name":"f512-01"}],
     "project":[{"id":"e9141fb24eee4b3e9f25ae69cda31132", "name":"cc-demo"}]
   },
   "ead212a0-de8a-4783-b8bc-dbfe915f009e":{

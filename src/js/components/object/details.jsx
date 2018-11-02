@@ -26,7 +26,7 @@ export default class ObjectDetails extends React.Component {
         }
 
         {!this.props.item || this.props.item.isFetching ?
-          <React.Fragment><span className='spinner'></span> Loading...</React.Fragment>
+          <div className="container-fluid"><span className='fas fa-spinner fa-pulse'></span> Loading...</div>
           : this.props.item.loadError ?
             <div className="container-fluid">
               <p className='text text-danger'>{this.props.id}: {this.props.item.loadError}</p>

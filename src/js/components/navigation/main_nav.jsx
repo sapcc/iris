@@ -9,8 +9,9 @@ export default ({profile}) =>
         <div className="logo"></div>
         Iris
       </a>
+
       {profile.isFetching ?
-        <React.Fragment><span className='spinner'></span> Loading...</React.Fragment>
+        <span className='fas fa-spinner fa-pulse'></span>
         :
         profile.user
           ? <React.Fragment>

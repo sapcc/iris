@@ -50,8 +50,6 @@
   font-size: .6em;
 }
 
-.spinner {
-  // @extend .fas;
-  // @extend .fa-spinner;
-  // @extend .fa-pulse;
+.fa-spinner {
+  color: $bright-blue;
 }

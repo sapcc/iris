@@ -42,6 +42,10 @@ export default ({item,dependencies}) =>
           }
         </dl>
 
+        {item.object_type == "alarm" &&
+          <button className="btn btn-outline-primary btn-sm">Create Status Update</button>
+        }
+
       </div>
       <div className="col">
         <h6>Details</h6>
@@ -52,7 +56,7 @@ export default ({item,dependencies}) =>
         {!dependencies || dependencies.isFetching
           ?
           <React.Fragment>
-            <span className='spinner'></span> Loading...
+            <span className='fas fa-spinner fa-pulse'></span> Loading...
           </React.Fragment>
           :
           <ul className="fa-ul u-list-align-left">
