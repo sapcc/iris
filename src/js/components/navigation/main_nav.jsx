@@ -14,10 +14,10 @@ export default ({profile}) =>
         <span className='fas fa-spinner fa-pulse'></span>
         :
         profile.user
-          ? <React.Fragment>
-              <Link to='/profile'>Profile</Link>
-            </React.Fragment>
-          : <Link to='/login'>Login</Link>
+          ?
+          <Link to='/profile'><img className="avatar" src={`https://avatars.wdf.sap.corp/avatar/${profile.user.name}?size=25x25`}/></Link>
+          :
+          <Link to='/login'>Login</Link>
       }
     </div>
   </nav>

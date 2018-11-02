@@ -58,25 +58,28 @@ export default ({item,dependencies}) =>
           <React.Fragment>
             <span className='fas fa-spinner fa-pulse'></span> Loading...
           </React.Fragment>
-          :
-          <ul className="fa-ul u-list-align-left">
-            {Object.keys(dependencies.items).map((type,index) =>
-              <li key={index}>
-                <span className="fa-li" ><i className="fas fa-caret-down"></i></span>
-                <span>{type} ({dependencies.items[type].length})</span>
-                <ul className="fa-ul u-list-align-left">
-                  {dependencies.items[type].map((subitem) =>
-                    <li key={subitem.id}>
-                      <Link to={`/objects/${subitem.id}`}>
-                        <span className="fa-li" ><i className="fal fa-square fa-xxs"></i></span>
-                        {subitem.name}
-                      </Link>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
-          </ul>
+          : Object.keys(dependencies.items).length === 0
+            ?
+            <div>None</div>
+            :
+            <ul className="fa-ul u-list-align-left">
+              {Object.keys(dependencies.items).map((type,index) =>
+                <li key={index}>
+                  <span className="fa-li" ><i className="fas fa-caret-down"></i></span>
+                  <span>{type} ({dependencies.items[type].length})</span>
+                  <ul className="fa-ul u-list-align-left">
+                    {dependencies.items[type].map((subitem) =>
+                      <li key={subitem.id}>
+                        <Link to={`/objects/${subitem.id}`}>
+                          <span className="fa-li" ><i className="fal fa-square fa-xxs"></i></span>
+                          {subitem.name}
+                        </Link>
+                      </li>
+                    )}
+                  </ul>
+                </li>
+              )}
+            </ul>
         }
       </div>
     </div>
