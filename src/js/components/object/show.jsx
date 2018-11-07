@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default ({item,dependencies}) =>
   <div className="container-fluid">
     <div className="row">
-      <div className="col-md-4">
+      <div className="col-md-3">
         <dl className="row">
           <dt className="col-lg-2">Name</dt>
           <dd className="col-lg-10">
@@ -51,7 +51,7 @@ export default ({item,dependencies}) =>
         <h6>Details</h6>
         <ReactJson src={item} collapsed={1}/>
       </div>
-      <div className="col-md-3">
+      <div className="col-md-4">
         <h6>Dependencies</h6>
         {!dependencies || dependencies.isFetching
           ?
@@ -69,7 +69,7 @@ export default ({item,dependencies}) =>
                   <span>{type} ({dependencies.items[type].length})</span>
                   <ul className="fa-ul u-list-align-left">
                     {dependencies.items[type].map((subitem) =>
-                      <li key={subitem.id}>
+                      <li key={subitem.id}  className="u-text-word-break">
                         <Link to={`/objects/${subitem.id}`}>
                           <span className="fa-li" ><i className="fal fa-square fa-xxs"></i></span>
                           {subitem.name}

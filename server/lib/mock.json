@@ -287,7 +287,7 @@
     ],
     "id":"eaa13da1-e37f-4711-939b-70c8d3c547fb",
     "operating_status":"ONLINE",
-    "name":"",
+    "name":"loadbalancer test",
     "object_type":"loadbalancer",
     "search_label":"loadbalancer test",
     "agent":"f512-01",
