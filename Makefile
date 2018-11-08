@@ -17,7 +17,7 @@ unit-test:
 	yarn --dev && yarn test
 
 integration-test:
-	yarn --dev && yarn link puppeteer && yarn integration
+	yarn link puppeteer && yarn --dev && yarn integration
 
 font-awesome-file:
 	@[ -f ./.npmrc ] || (touch ./.npmrc && echo "@fortawesome:registry=https://npm.fontawesome.com/" > ./.npmrc && echo //npm.fontawesome.com/:_authToken=$(auth-token) >> ./.npmrc)

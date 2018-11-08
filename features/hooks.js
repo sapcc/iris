@@ -6,7 +6,7 @@ Before(async () => {
   // You can clean up database models here
   if (!scope.browser)
     if (process.env.PUPPETEER_APP_HOST)
-      scope.browser = await scope.driver.launch({executablePath: '/usr/bin/chromium-browser', args: ['--disable-dev-shm-usage'], headless: true, slowMo: 5});
+      scope.browser = await scope.driver.launch({executablePath: '/usr/bin/chromium-browser', args: ['--disable-dev-shm-usage', '--no-sandbox'], headless: true, slowMo: 5});
     else
       scope.browser = await scope.driver.launch({headless: true, slowMo: 5});
 });

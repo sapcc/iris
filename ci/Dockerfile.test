@@ -1,9 +1,32 @@
 FROM node:8.12-alpine AS iris
 
-RUN apk --no-cache add git ca-certificates bash make
+RUN apk --no-cache add git ca-certificates bash make nano sudo
 
-RUN yarn global add puppeteer
+RUN apk update && apk upgrade && \
+    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
+    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
+    apk add --no-cache \
+      chromium@edge \
+      nss@edge
 
+# Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+
+# Puppeteer v1.4.0 works with Chromium 68.
+RUN yarn global add puppeteer@1.4.0
 WORKDIR  /usr/local/share/.config/yarn/global/node_modules/puppeteer
-
 RUN yarn link
+
+
+
+############################
+# for testing comment afterwards
+############################
+# ADD . /home/app/webapp
+# WORKDIR /home/app/webapp
+
+# RUN make font-awesome-file auth-token=XXX
+# RUN yarn link puppeteer
+# RUN yarn --dev
+
+# ENV PUPPETEER_APP_HOST "https://iris.qa-de-1.cloud.sap"
