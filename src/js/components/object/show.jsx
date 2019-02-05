@@ -2,86 +2,75 @@ import React from "react";
 import ReactJson from 'react-json-view'
 import { Link } from 'react-router-dom'
 
-export default ({item,dependencies}) =>
-  <div className="container-fluid">
-    <div className="row">
-      <div className="col-md-3">
-        <dl className="row">
-          <dt className="col-lg-2">Name</dt>
-          <dd className="col-lg-10">
-            { item.name
-              ?
-              <strong>{item.name}</strong>
-              :
-              <span>n/a</span>
-            }
-          </dd>
+const availableRelations = {
+  'projects': [{name: 'Project1', id:'e9141fb24eee4b3e9f25ae69cda31132'}],
+  'ips': [
+    {'address':'10.0.0.1', project_id: 'e9141fb24eee4b3e9f25ae69cda31132'},
+    {'address':'20.0.0.1', project_id: 'e9141fb24eee4b3e9f25ae69cda31132'},
+    {'address':'30.0.0.1', project_id: '2'},
+  ],
+  'users':[
+    {'name':'User1', project_id: 'e9141fb24eee4b3e9f25ae69cda31132', id: '1'},
+    {'name':'User2', project_id: 'e9141fb24eee4b3e9f25ae69cda31132', id: '2'},
+    {'name':'User3', project_id: 'e9141fb24eee4b3e9f25ae69cda31132', id: '3'},
+    {'name':'User4', project_id: '2', id: '4'},
+    {'name':'User5', project_id: '3', id: '5'},
+  ]
+}
 
-          <dt className="col-lg-2">ID</dt>
-          <dd className="col-lg-10"><span className="u-text-info-dark font-weight-lightest u-text-small">{item.id}</span></dd>
+export default class ObjectShow extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { relations: [props.item.object_type] }
+  }
 
-          <dt className="col-lg-2">Type</dt>
-          <dd className="col-lg-10">{item.object_type}</dd>
+  addRelation = (name) => {
+    if(!name) return
+    const relations = this.state.relations.slice()
+    relations.push(name)
+    this.setState({relations})
+  }
 
-          <dt className="col-lg-2">Region</dt>
-          <dd className="col-lg-10">{item.region}</dd>
+  relationItems = (name) => {
+    if(name===this.props.item.object_type) {
+      return [this.props.item]
+    }
+    const relations = availableRelations[name]
+    if(relations) return relations.filter(rel => 
+      rel.project_id===this.props.item.project_id ||
+      rel.id===this.props.item.project_id
+    )
+    return []
+  }
 
-          {item.domain_name &&
-            <React.Fragment>
-              <dt className="col-lg-2">Domain</dt>
-              <dd className="col-lg-10">{item.domain_name} <br /> <span className="u-text-info-dark font-weight-lightest u-text-small">{item.domain_id}</span></dd>
-            </React.Fragment>
+  render(){
+    return(
+      <div className="container-fluid">
 
-          }
+        <select onChange={(e) => this.addRelation(e.target.value)} defaultValue={null}>
+          <option value={null}>Add Relation</option>
+          {Object.keys(availableRelations).filter(a => !this.state.relations.find(u => a == u)).map((type,index) => <option key={index} value={type}>{type}</option>)}
+        </select>  
 
-          {item.project_name &&
-            <React.Fragment>
-              <dt className="col-lg-2">Project</dt>
-              <dd className="col-lg-10">{item.project_name} <br /> <span className="u-text-info-dark font-weight-lightest u-text-small">{item.project_id}</span></dd>
-            </React.Fragment>
-          }
-        </dl>
-
-        {item.object_type == "alarm" &&
-          <button className="btn btn-outline-primary btn-sm">Create Status Update</button>
-        }
-
-      </div>
-      <div className="col">
-        <h6>Details</h6>
-        <ReactJson src={item} collapsed={1}/>
-      </div>
-      <div className="col-md-4">
-        <h6>Dependencies</h6>
-        {!dependencies || dependencies.isFetching
-          ?
-          <React.Fragment>
-            <i className='fas fa-spinner fa-pulse'></i> Loading...
-          </React.Fragment>
-          : Object.keys(dependencies.items).length === 0
-            ?
-            <div>None</div>
-            :
-            <ul className="fa-ul u-list-align-left">
-              {Object.keys(dependencies.items).map((type,index) =>
-                <li key={index}>
-                  <span className="fa-li" ><i className="fas fa-caret-down"></i></span>
-                  <span>{type} ({dependencies.items[type].length})</span>
-                  <ul className="fa-ul u-list-align-left">
-                    {dependencies.items[type].map((subitem) =>
-                      <li key={subitem.id}  className="u-text-word-break">
-                        <Link to={`/objects/${subitem.id}`}>
-                          <span className="fa-li" ><i className="fal fa-square fa-xxs"></i></span>
-                          {subitem.name}
-                        </Link>
-                      </li>
-                    )}
-                  </ul>
-                </li>
+        <table className="table">
+          <thead>
+            <tr>
+              {this.state.relations.map((type,index) => <th key={index}>{type}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {this.state.relations.map(type => 
+                <td key={type}>
+                  {this.relationItems(type).map((obj,index) => 
+                    <React.Fragment key={index}>{obj.name || obj.address}<br/></React.Fragment>
+                  )} 
+                </td>
               )}
-            </ul>
-        }
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-
-  </div>
+    )
+  }
+}
