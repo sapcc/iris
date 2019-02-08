@@ -6701,13 +6701,13 @@ react-base16-styling@^0.6.0:
     pure-color "^1.2.0"
 
 react-dom@^16.4.2:
-  version "16.6.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.6.0.tgz#6375b8391e019a632a89a0988bce85f0cc87a92f"
+  version "16.8.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.1.tgz#ec860f98853d09d39bafd3a6f1e12389d283dbb4"
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.10.0"
+    scheduler "^0.13.1"
 
 react-is@^16.5.2, react-is@^16.6.0:
   version "16.6.0"
@@ -6897,6 +6897,10 @@ redux-mock-store@^1.5.3:
   resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.5.3.tgz#1f10528949b7ce8056c2532624f7cafa98576c6d"
   dependencies:
     lodash.isplainobject "^4.0.6"
+
+redux-react-hook@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/redux-react-hook/-/redux-react-hook-3.1.0.tgz#cafc0fb4b2bf8512791ee2efb965cb9babca69d7"
 
 redux-thunk@^2.3.0:
   version "2.3.0"
