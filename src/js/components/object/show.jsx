@@ -4,11 +4,16 @@ import {
   Link
 } from 'react-router-dom'
 import {
+  FormGroup,
+  Input,
+  Col,
+  Label,
   UncontrolledTooltip,
   Card,
   Button,
   CardImg,
   CardTitle,
+  CardHeader,
   CardText,
   CardGroup,
   CardSubtitle,
@@ -69,88 +74,59 @@ export default class ObjectShow extends React.Component {
 
     return (
       <div className="container-fluid">
-        {!dependencies || dependencies.isFetching 
-            ? <span className="spinner"/>
-            :
-            <select onChange={(e) => this.addRelation(e.target.value)} value=''>
-              <option value=''>Add Relation</option>
-              {this.filterRelations().map((type,index) => 
-                <option key={index} value={type}>{type}</option>
-              )}
-            </select>  
-        }
-        <div className="row">
-          <Card className="text-center">
-            <CardBody>
-              <CardTitle>{item.object_type}</CardTitle>
-              <CardText>{item.name}</CardText>
-            </CardBody>
-          </Card>
-        </div>
-          
+        
+        <Card className="text-center">
+          <CardBody>
+            <CardTitle>{item.object_type}</CardTitle>
+            <CardText>{item.name}</CardText>
+            
+            {!dependencies || dependencies.isFetching 
+                ? <span className="spinner"/>
+                :
+                <React.Fragment>
+                  <FormGroup row className="justify-content-md-center">
+                    <Col sm={3}>
+                    <Input type="select" onChange={(e) => this.addRelation(e.target.value)} value=''>
+                      <option value=''>Add Relation</option>
+                      {this.filterRelations().map((type,index) => 
+                        <option key={index} value={type}>{type}</option>
+                      )}
+                    </Input>  
+                  </Col>
+                  </FormGroup>
+                </React.Fragment>
+            }
+          </CardBody>
+        </Card>
+        <br />
+
         <CardColumns>
           {this.state.relations.map(type =>
             <Card key={type}>
-              <CardBody>
-                <CardTitle>
-                  {type}
-                </CardTitle>
-                <CardText>
-                  {this.relationItems(type).map((obj,index) => 
-                    <React.Fragment key={index}>
-                        <span id={`tooltip-${type}-${index}`}>{obj.name}</span>
-                        <br/>
-                        <span className="small text-info">{obj._path}</span>
-                        <br />
-                        
-                    </React.Fragment>  
+              <CardHeader>
+                {type}
+              <span className="float-right clickable close-icon" onClick={(e) => this.removeRelation(type)}>
+                <i className="fa fa-times text-info"></i>
+              </span>
+            </CardHeader>
+            <CardBody>
+              <ul>
+                {this.relationItems(type).map((obj,index) => 
+                  <li key={index}>
+                    <span id={`tooltip-${type}-${index}`}>{obj.name}</span>
+                      <br/>
+                      <span className="small text-info">{obj._path}</span>
+                    </li>  
                   )}
-                </CardText>
+                </ul>
               </CardBody>
             </Card>
           )}
         </CardColumns>
+                  
+          
 
       </div>
     )
   }
 }
-
-/*
-      <table className="table">
-        <thead>
-          <tr>
-            {this.state.relations.map((type,index) => <th key={index}>{type}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {this.state.relations.map(type => 
-              <td key={type}>
-                {this.relationItems(type).map((obj,index) => 
-                  <React.Fragment key={index}>
-                    <div>
-                      <span id={`tooltip-${type}-${index}`}>{obj.name}</span>
-                      <br/>
-                      <span className="small text-info">{obj._path}</span>
-                                              
-                      <UncontrolledTooltip placement="top" target={`tooltip-${type}-${index}`}>
-                        <table>  
-                          <tbody>
-                            <tr>
-                              <th>Path</th>
-                              <td>{obj._path}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </UncontrolledTooltip>
-
-                    </div>
-                  </React.Fragment>
-                )} 
-              </td>
-            )}
-          </tr>
-        </tbody>
-      </table>
-      */
