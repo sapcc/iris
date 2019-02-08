@@ -1,76 +1,156 @@
 import React from "react";
 import ReactJson from 'react-json-view'
-import { Link } from 'react-router-dom'
-
-const availableRelations = {
-  'projects': [{name: 'Project1', id:'e9141fb24eee4b3e9f25ae69cda31132'}],
-  'ips': [
-    {'address':'10.0.0.1', project_id: 'e9141fb24eee4b3e9f25ae69cda31132'},
-    {'address':'20.0.0.1', project_id: 'e9141fb24eee4b3e9f25ae69cda31132'},
-    {'address':'30.0.0.1', project_id: '2'},
-  ],
-  'users':[
-    {'name':'User1', project_id: 'e9141fb24eee4b3e9f25ae69cda31132', id: '1'},
-    {'name':'User2', project_id: 'e9141fb24eee4b3e9f25ae69cda31132', id: '2'},
-    {'name':'User3', project_id: 'e9141fb24eee4b3e9f25ae69cda31132', id: '3'},
-    {'name':'User4', project_id: '2', id: '4'},
-    {'name':'User5', project_id: '3', id: '5'},
-  ]
-}
+import {
+  Link
+} from 'react-router-dom'
+import {
+  UncontrolledTooltip,
+  Card,
+  Button,
+  CardImg,
+  CardTitle,
+  CardText,
+  CardGroup,
+  CardSubtitle,
+  CardBody,
+  CardColumns
+} from 'reactstrap';
 
 export default class ObjectShow extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { relations: [props.item.object_type] }
+    this.state = {
+      relations: []
+    }
   }
 
   addRelation = (name) => {
-    if(!name) return
+    if (!name || name.length === 0) return
     const relations = this.state.relations.slice()
     relations.push(name)
-    this.setState({relations})
+    this.setState({
+      relations
+    })
+  }
+
+  removeRelation = (name) => {
+    if (!name || name.length === 0) return
+    const index = this.state.relations.indexOf(name)
+    if (index < 0) return
+    let relations = this.state.relations.slice()
+    relations.splice(index, 1)
+    this.setState({
+      relations
+    })
   }
 
   relationItems = (name) => {
-    if(name===this.props.item.object_type) {
-      return [this.props.item]
-    }
-    const relations = availableRelations[name]
-    if(relations) return relations.filter(rel => 
-      rel.project_id===this.props.item.project_id ||
-      rel.id===this.props.item.project_id
-    )
-    return []
+    const {
+      dependencies
+    } = this.props
+
+    const relations = dependencies.isFetching ? [] : dependencies.items[name]
+    return relations || []
   }
 
-  render(){
-    return(
+  filterRelations = () => {
+    if (this.props.dependencies.isFetching || !this.props.dependencies.items) return
+
+    return Object.keys(this.props.dependencies.items).filter(a =>
+      !this.state.relations.find(u => a == u)
+    )
+  }
+
+  render() {
+    const {
+      item,
+      dependencies
+    } = this.props
+
+    return (
       <div className="container-fluid">
-
-        <select onChange={(e) => this.addRelation(e.target.value)} defaultValue={null}>
-          <option value={null}>Add Relation</option>
-          {Object.keys(availableRelations).filter(a => !this.state.relations.find(u => a == u)).map((type,index) => <option key={index} value={type}>{type}</option>)}
-        </select>  
-
-        <table className="table">
-          <thead>
-            <tr>
-              {this.state.relations.map((type,index) => <th key={index}>{type}</th>)}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {this.state.relations.map(type => 
-                <td key={type}>
-                  {this.relationItems(type).map((obj,index) => 
-                    <React.Fragment key={index}>{obj.name || obj.address}<br/></React.Fragment>
-                  )} 
-                </td>
+        {!dependencies || dependencies.isFetching 
+            ? <span className="spinner"/>
+            :
+            <select onChange={(e) => this.addRelation(e.target.value)} value=''>
+              <option value=''>Add Relation</option>
+              {this.filterRelations().map((type,index) => 
+                <option key={index} value={type}>{type}</option>
               )}
-            </tr>
-          </tbody>
-        </table>
+            </select>  
+        }
+        <div className="row">
+          <Card className="text-center">
+            <CardBody>
+              <CardTitle>{item.object_type}</CardTitle>
+              <CardText>{item.name}</CardText>
+            </CardBody>
+          </Card>
+        </div>
+          
+        <CardColumns>
+          {this.state.relations.map(type =>
+            <Card key={type}>
+              <CardBody>
+                <CardTitle>
+                  {type}
+                </CardTitle>
+                <CardText>
+                  {this.relationItems(type).map((obj,index) => 
+                    <React.Fragment key={index}>
+                        <span id={`tooltip-${type}-${index}`}>{obj.name}</span>
+                        <br/>
+                        <span className="small text-info">{obj._path}</span>
+                        <br />
+                        
+                    </React.Fragment>  
+                  )}
+                </CardText>
+              </CardBody>
+            </Card>
+          )}
+        </CardColumns>
+
       </div>
     )
   }
 }
+
+/*
+      <table className="table">
+        <thead>
+          <tr>
+            {this.state.relations.map((type,index) => <th key={index}>{type}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {this.state.relations.map(type => 
+              <td key={type}>
+                {this.relationItems(type).map((obj,index) => 
+                  <React.Fragment key={index}>
+                    <div>
+                      <span id={`tooltip-${type}-${index}`}>{obj.name}</span>
+                      <br/>
+                      <span className="small text-info">{obj._path}</span>
+                                              
+                      <UncontrolledTooltip placement="top" target={`tooltip-${type}-${index}`}>
+                        <table>  
+                          <tbody>
+                            <tr>
+                              <th>Path</th>
+                              <td>{obj._path}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </UncontrolledTooltip>
+
+                    </div>
+                  </React.Fragment>
+                )} 
+              </td>
+            )}
+          </tr>
+        </tbody>
+      </table>
+      */
