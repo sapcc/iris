@@ -23,7 +23,8 @@ font-awesome-file:
 	@[ -f ./.npmrc ] || (touch ./.npmrc && echo "@fortawesome:registry=https://npm.fontawesome.com/" > ./.npmrc && echo //npm.fontawesome.com/:_authToken=$(auth-token) >> ./.npmrc)
 
 build-test:
-	docker build -t $(TEST-IMAGE):$(UNIT-VERSION) -f ./ci/Dockerfile.test .
+	docker build -t $(TEST-IMAGE):$(UNIT-VERSION) -f ./Dockerfile.test .
 
 push-test:
 	docker push $(TEST-IMAGE):$(UNIT-VERSION)
+
