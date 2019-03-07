@@ -6,6 +6,10 @@ var {mergeUserAndToken} = require('../../lib/api_helpers');
 
 router.post("/login", (req, res) => {
   console.log('::::::::::::::::LOGIN::::::::::::::::')
+  console.log('AUTH_SCOPE_DOMAIN: ',process.env.AUTH_SCOPE_DOMAIN)
+  console.log('AUTH_SCOPE_PROJECT: ',process.env.AUTH_SCOPE_PROJECT)
+  console.log('USER: ',req.body.user)
+  
   identityClient.createTokenByPassword({
     domain: process.env.AUTH_SCOPE_DOMAIN,
     scopeDomainName: process.env.AUTH_SCOPE_DOMAIN,
@@ -13,6 +17,7 @@ router.post("/login", (req, res) => {
     user: req.body.user,
     password: req.body.password
   }).then(token => {
+    console.log('>>>>>>>>>>>>>>>TOKEN: ',token)
     req.token = token.data
     req.authToken = token.authToken
 
@@ -20,13 +25,14 @@ router.post("/login", (req, res) => {
     if(!isAllowed(req.token)) throw createError(403)
     return identityClient.user(req.authToken, req.token.user.id)
   }).then(user => {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>USER', user)
     res.cookie('auth_token', req.authToken, {
       expires: new Date(req.token.expires_at),
       secure: req.app.get('env')=='production',
       httpOnly: true
     }).status(200).json(mergeUserAndToken(user,req.token))
   }).catch(error => {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',error.message)
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',error, error.message)
     res.status(error.status).send(error.message)
   })
 });
