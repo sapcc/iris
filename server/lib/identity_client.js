@@ -100,11 +100,12 @@ module.exports = (endpoint) => {
     let scope = buildScopeParams(options)
     if (scope) auth["scope"] = scope
 
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>><createTokenByPassword', auth)
     return apiRequest(
       axios.post(`${endpoint}/v3/auth/tokens?nocatalog`, {auth})
         .then(response =>
           new Token(response.data.token, response.headers['x-subject-token'])
-        )
+        ).catch(e => console.log(e))
     )
   }
 
