@@ -5,7 +5,7 @@ var {isAllowed} = require('../../lib/policy');
 var {mergeUserAndToken} = require('../../lib/api_helpers');
 
 router.post("/login", (req, res) => {
-  // console.log('::::::::::::::::LOGIN::::::::::::::::')
+  console.log('::::::::::::::::LOGIN::::::::::::::::')
   identityClient.createTokenByPassword({
     domain: process.env.AUTH_SCOPE_DOMAIN,
     scopeDomainName: process.env.AUTH_SCOPE_DOMAIN,
@@ -25,7 +25,10 @@ router.post("/login", (req, res) => {
       secure: req.app.get('env')=='production',
       httpOnly: true
     }).status(200).json(mergeUserAndToken(user,req.token))
-  }).catch(error => res.status(error.status).send(error.message))
+  }).catch(error => {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',error.message)
+    res.status(error.status).send(error.message)
+  })
 });
 
 router.post("/logout", (req, res) => {

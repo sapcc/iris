@@ -1,87 +1,109 @@
-import React from "react";
+import React, {
+  useState
+} from "react";
 import ReactJson from 'react-json-view'
-import { Link } from 'react-router-dom'
+import {
+  Link
+} from 'react-router-dom'
+import {
+  FormGroup,
+  Input,
+  Col,
+  UncontrolledTooltip,
+  Card,
+  CardTitle,
+  CardHeader,
+  CardText,
+  CardBody,
+  CardColumns
+} from 'reactstrap';
 
-export default ({item,dependencies}) =>
-  <div className="container-fluid">
-    <div className="row">
-      <div className="col-md-3">
-        <dl className="row">
-          <dt className="col-lg-2">Name</dt>
-          <dd className="col-lg-10">
-            { item.name
-              ?
-              <strong>{item.name}</strong>
+export default ({
+  item,
+  dependencies
+}) => {
+  const [relations, setRelations] = useState([])
+
+  const addRelation = (name) => {
+    if (!name || name.length === 0) return
+    const newRelations = relations.slice()
+    newRelations.push(name)
+    setRelations(newRelations)
+  }
+
+  const removeRelation = (name) => {
+    if (!name || name.length === 0) return
+    const index = relations.indexOf(name)
+    if (index < 0) return
+    let newRelations = relations.slice()
+    newRelations.splice(index, 1)
+    setRelations(newRelations)
+  }
+
+  const relationItems = (name) => {
+    const items = dependencies.isFetching ? [] : dependencies.items[name]
+    return items || []
+  }
+
+  const filterRelations = () => {
+    if (dependencies.isFetching || !dependencies.items) return
+
+    return Object.keys(dependencies.items).filter(a =>
+      !relations.find(u => a == u)
+    )
+  }
+
+
+  return (
+    <div className="container-fluid">
+      <Card className="text-center">
+        <CardBody>
+          <CardTitle>{item.object_type}</CardTitle>
+          <CardText>{item.name}</CardText>
+          
+          {!dependencies || dependencies.isFetching 
+              ? <span className="spinner"/>
               :
-              <span>n/a</span>
-            }
-          </dd>
-
-          <dt className="col-lg-2">ID</dt>
-          <dd className="col-lg-10"><span className="u-text-info-dark font-weight-lightest u-text-small">{item.id}</span></dd>
-
-          <dt className="col-lg-2">Type</dt>
-          <dd className="col-lg-10">{item.object_type}</dd>
-
-          <dt className="col-lg-2">Region</dt>
-          <dd className="col-lg-10">{item.region}</dd>
-
-          {item.domain_name &&
-            <React.Fragment>
-              <dt className="col-lg-2">Domain</dt>
-              <dd className="col-lg-10">{item.domain_name} <br /> <span className="u-text-info-dark font-weight-lightest u-text-small">{item.domain_id}</span></dd>
-            </React.Fragment>
-
-          }
-
-          {item.project_name &&
-            <React.Fragment>
-              <dt className="col-lg-2">Project</dt>
-              <dd className="col-lg-10">{item.project_name} <br /> <span className="u-text-info-dark font-weight-lightest u-text-small">{item.project_id}</span></dd>
-            </React.Fragment>
-          }
-        </dl>
-
-        {item.object_type == "alarm" &&
-          <button className="btn btn-outline-primary btn-sm">Create Status Update</button>
-        }
-
-      </div>
-      <div className="col">
-        <h6>Details</h6>
-        <ReactJson src={item} collapsed={1}/>
-      </div>
-      <div className="col-md-4">
-        <h6>Dependencies</h6>
-        {!dependencies || dependencies.isFetching
-          ?
-          <React.Fragment>
-            <i className='fas fa-spinner fa-pulse'></i> Loading...
-          </React.Fragment>
-          : Object.keys(dependencies.items).length === 0
-            ?
-            <div>None</div>
-            :
-            <ul className="fa-ul u-list-align-left">
-              {Object.keys(dependencies.items).map((type,index) =>
-                <li key={index}>
-                  <span className="fa-li" ><i className="fas fa-caret-down"></i></span>
-                  <span>{type} ({dependencies.items[type].length})</span>
-                  <ul className="fa-ul u-list-align-left">
-                    {dependencies.items[type].map((subitem) =>
-                      <li key={subitem.id}  className="u-text-word-break">
-                        <Link to={`/objects/${subitem.id}`}>
-                          <span className="fa-li" ><i className="fal fa-square fa-xxs"></i></span>
-                          {subitem.name}
-                        </Link>
-                      </li>
+              <React.Fragment>
+                <FormGroup row className="justify-content-md-center">
+                  <Col sm={3}>
+                  <Input type="select" onChange={(e) => addRelation(e.target.value)} value=''>
+                    <option value=''>Add Relation</option>
+                    {filterRelations().map((type,index) => 
+                      <option key={index} value={type}>{type}</option>
                     )}
-                  </ul>
-                </li>
-              )}
-            </ul>
-        }
-      </div>
-    </div>
+                  </Input>  
+                </Col>
+                </FormGroup>
+              </React.Fragment>
+          }
+        </CardBody>
+      </Card>
+      <br />
 
-  </div>
+      <CardColumns>
+        {relations.map(type =>
+          <Card key={type}>
+            <CardHeader>
+              {type}
+            <span className="float-right clickable close-icon" onClick={(e) => removeRelation(type)}>
+              <i className="fa fa-times text-info"></i>
+            </span>
+          </CardHeader>
+          <CardBody>
+            <ul>
+              {relationItems(type).map((obj,index) => 
+                <li key={index}>
+                  <span id={`tooltip-${type}-${index}`}>{obj.name}</span>
+                    <br/>
+                    <span className="small text-info">{obj._path}</span>
+                  </li>  
+                )}
+              </ul>
+            </CardBody>
+          </Card>
+        )}
+      </CardColumns>
+    </div>
+  )
+}

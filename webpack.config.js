@@ -61,7 +61,7 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '*': 'http://localhost:80'
+      '*': 'http://0.0.0.0:80'
     }
     // proxy: {
     //   '/api': 'http://localhost:80',
