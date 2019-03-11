@@ -4,6 +4,9 @@ var {Token} = require('./token')
 var createError = require('http-errors');
 
 module.exports = (endpoint) => {
+  if(endpoint.endsWith('/')) endpoint = endpoint.substring(0,endpoint.length-1)
+  if(endpoint.endsWith('/v3')) endpoint = endpoint.substring(0,endpoint.length-3)
+
   const buildScopeParams = (scopeOptions = {}) => {
     let scope = {}
     if (scopeOptions.scopeProjectId)
@@ -100,7 +103,6 @@ module.exports = (endpoint) => {
     let scope = buildScopeParams(options)
     if (scope) auth["scope"] = scope
 
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>><createTokenByPassword', auth)
     return apiRequest(
       axios.post(`${endpoint}/v3/auth/tokens?nocatalog`, {auth})
         .then(response =>
