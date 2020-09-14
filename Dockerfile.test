@@ -1,4 +1,5 @@
 FROM node:8.12-alpine AS iris
+LABEL source_repository="https://github.com/sapcc/iris"
 
 RUN apk --no-cache add git ca-certificates bash make nano sudo
 
