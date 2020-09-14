@@ -1,5 +1,5 @@
 IMAGE := sapcc/iris
-TEST-IMAGE := hub.global.cloud.sap/monsoon/nodebuild
+TEST-IMAGE := keppel.eu-de-1.cloud.sap/ccloud/nodebuild
 DATE     := $(shell date +%Y%m%d%H%M%S)
 VERSION  ?= v$(DATE)
 UNIT-VERSION := 8.12
